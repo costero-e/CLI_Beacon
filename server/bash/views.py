@@ -12,52 +12,78 @@ def execute_bash():
 def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     if isinstance(value1, list):
         for value in value1:
-            value = str(value)
-            value1 = value
+            value1 = str(value)
+            value1 = "'" + value1 + "'"
     elif isinstance(value1, int):
         value = str(value)
         value1 = value
+        value1 = "'" + value1 + "'"
+    else:
+        value1 = str(value1)
+        value1 = "'" + value1 + "'"
     if isinstance(value2, list):
         for value in value2:
-            value = str(value)
-            value2 = value
+            value2 = str(value)
+            value2 = "'" + value2 + "'"
     elif isinstance(value2, int):
         value = str(value)
         value2 = value
+        value2 = "'" + value2 + "'"
+    else:
+        value2 = str(value2)
+        value2 = "'" + value2 + "'"
     if isinstance(value3, list):
         for value in value3:
-            value = str(value)
-            value3 = value
+            value3 = str(value)
+            value3 = "'" + value3 + "'"
     elif isinstance(value3, int):
         value = str(value3)
         value3 = value
+        value3 = "'" + value3 + "'"
+    else:
+        value3 = str(value3)
+        value3 = "'" + value3 + "'"
     if isinstance(value4, list):
         for value in value4:
-            value = str(value)
-            value4 = value
+            value4 = str(value)
+            value4 = "'" + value4 + "'"
     elif isinstance(value4, int):
         value = str(value4)
         value4 = value
+        value4 = "'" + value4 + "'"
+    else:
+        value4 = str(value4)
+        value4 = "'" + value4 + "'"
     if isinstance(value5, list):
         for value in value5:
-            value = str(value)
-            value5 = value
+            value5 = str(value)
+            value5 = "'" + value5 + "'"
     elif isinstance(value5, int):
         value = str(value)
         value5 = value
+        value5 = "'" + value5 + "'"
+    else:
+        value5 = str(value5)
+        value5 = "'" + value5 + "'"
     if isinstance(value7, list):
-        for value in value6:
-            value = str(value)
-            value7 = value
+        for value in value7:
+            value7 = str(value)
+            value7 = "'" + value7 + "'"
     elif isinstance(value7, int):
         value = str(value)
         value7 = value
+        value7 = "'" + value7 + "'"
+    else:
+        value7 = str(value7)
+        value7 = "'" + value7 + "'"
     if value6 == True:
         value6 = 'LIFTOVER'
+        value6 = "'" + value6 + "'"
     elif value6 == False:
         value6 = ''
     if value8 == True:
         value8 = 'PUBLIC'
+        value8 = "'" + value8 + "'"
     elif value8 == False:
         value8 = ''
 
