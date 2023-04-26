@@ -185,7 +185,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
     #bash = 'EGAKASOFKSAFO/nEGKAPOGKAPKGSAPKG/naspdaspfksapkaspkf/napsgjaspgjpagj/nASFASFA'
 
-    new_bash_list = bash.split('/n')
+    new_bash_list = bash.split('n')
     
 
 
