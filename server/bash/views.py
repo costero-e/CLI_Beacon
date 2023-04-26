@@ -51,8 +51,8 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         value = str(value4)
         value4 = value
         value4 = "'" + value4 + "'"
-    else:
-        value4 = str(value4)
+    elif value4 == None:
+        value4 = ''
         value4 = "'" + value4 + "'"
     if isinstance(value5, list):
         for value in value5:
@@ -92,7 +92,10 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
 
-    return string
+    bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based', '&&', 'bash', 'exec-MAIN.bash', string])
+
+
+    return bash
 
 
 def bash_view(request):
