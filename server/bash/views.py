@@ -86,7 +86,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
         
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
 
-    bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based', '&&', 'bash', 'exec-MAIN.bash', string], shell=True)
+    bash = subprocess.check_output(['cd', '/beacon-BED-based', '&&', 'bash', 'exec-MAIN.bash', string], shell=True)
     #bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based'], shell=True)
 
 
@@ -177,7 +177,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
 
     
-    bash_string = 'bash' + ' ' + '/data/boxes/beacon-BED-based/exec-MAIN.bash' + ' ' + string
+    bash_string = 'bash' + ' ' + '/beacon-BED-based/exec-MAIN.bash' + ' ' + string
 
     bash = subprocess.check_output([bash_string], shell=True)
 
