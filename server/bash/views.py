@@ -186,7 +186,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     new_bash_list=[]
 
     for item in bash_list:
-        item.decode("utf-8") 
+        item = item.decode("utf-8") 
         new_bash_list.append(item)
 
     #bash = 'EGAKASOFKSAFO/nEGKAPOGKAPKGSAPKG/naspdaspfksapkaspkf/napsgjaspgjpagj/nASFASFA'
