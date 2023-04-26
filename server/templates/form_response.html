@@ -24,8 +24,9 @@
       </nav>
     <h1>Results</h1>
     {% for e in bash_out %}
-    {{e}}
-    <br>
+    <table>
+        <tr>{{e}}</tr>
+    </table>
     {% endfor %}
 </body>
 </html>

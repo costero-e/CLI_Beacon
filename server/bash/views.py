@@ -178,12 +178,12 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
     
     bash_string = 'bash' + ' ' + '/data/boxes/beacon-BED-based/exec-MAIN.bash' + ' ' + string
-    #bash_string = 'ls'
 
-    #bash = subprocess.check_output(['bash', 'exec-MAIN.bash', string], shell=True)
     bash = subprocess.check_output([bash_string], shell=True)
-    #bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based'], shell=True)
+
     bash = bash.decode("utf-8") 
+
+    #bash = 'EGAKASOFKSAFO/nEGKAPOGKAPKGSAPKG/naspdaspfksapkaspkf/napsgjaspgjpagj/nASFASFA'
 
     new_bash_list = bash.split('/n')
     
