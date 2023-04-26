@@ -176,6 +176,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
 
     bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based', '&&', 'bash', 'exec-MAIN.bash', string], shell=True)
+    #bash = subprocess.check_output(['cd', '/server/angelweb', 'ls'], shell=True)
     #bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based'], shell=True)
 
 
@@ -185,7 +186,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 def bash_view(request):
     template = "home.html"
     form =BamForm()
-    
+    context = {'form': form}
     if request.method == 'POST':
         form = BamForm(request.POST)
         if form.is_valid():
