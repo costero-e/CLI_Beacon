@@ -172,17 +172,28 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         value8 = ''
         value8 = "'" + value8 + "'"
 
-        
+    
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
 
-    bash_string = 'bash' + ' ' + 'exec-MAIN.bash' + ' ' + string
+
+    
+    bash_string = 'bash' + ' ' + '/data/boxes/beacon-BED-based/exec-MAIN.bash' + ' ' + string
+
+    bash_string_list = bash_string.split('/n')
 
     #bash = subprocess.check_output(['bash', 'exec-MAIN.bash', string], shell=True)
     bash = subprocess.check_output([bash_string], shell=True)
     #bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based'], shell=True)
 
+    new_bash = bash.replace("b'","")
 
-    return bash
+    new_bash_list = new_bash.split('/n')
+    
+
+
+
+
+    return new_bash_list
 
 
 def bash_view(request):
