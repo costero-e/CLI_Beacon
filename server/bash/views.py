@@ -54,11 +54,15 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         value7 = value
     if value6 == True:
         value6 = 'LIFTOVER'
+    elif value6 == False:
+        value6 = ''
     if value8 == True:
         value8 = 'PUBLIC'
+    elif value8 == False:
+        value8 = ''
 
         
-    string = value1 + value2 + value3 + value4 + value5 + value7 + value6 + value8
+    string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
 
     return string
 
