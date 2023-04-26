@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-doo1h)d&2mto!d5398vnp9+vs(9dgq!d_2n6_-8w65=@a5f98m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['beacon-test.ega-archive.org', 'localhost']
 CSRF_TRUSTED_ORIGINS = ['https://beacon-test.ega-archive.org']
