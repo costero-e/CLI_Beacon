@@ -202,7 +202,7 @@ def bash_view(request):
 
             }
 
-            timestr = time.strftime("%Y%m%d-%H%M%S")
+            timestr = time.strftime("%Y%m%d")
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
