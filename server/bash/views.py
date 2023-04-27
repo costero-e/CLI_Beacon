@@ -225,30 +225,22 @@ def bash_view(request):
                 check += 1
         if check > 3:
             try:
-                if params['region']:
-                    pass
-                else:
-                    params['region']=''
+                if params['region'] is None:
+                    params['region'] = ''
             except Exception:
                 params['region']=''
             try:
-                if params['alt']:
-                    pass
-                else:
+                if params['alt'] is None:
                     params['alt']=''
             except Exception:
                 params['alt']=''
             try:
-                if params['liftover']:
-                    pass
-                else:
+                if params['liftover'] is None:
                     params['liftover']=''
             except Exception:
                 params['liftover']=''
             try:
-                if params['public']:
-                    pass
-                else:
+                if params['public'] is None:
                     params['public']=''
             except Exception:
                 params['public']=''
