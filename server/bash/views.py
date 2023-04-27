@@ -209,8 +209,8 @@ def bash_view(request):
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['alt'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + 'POST' + '\n')
             file.close()
 
-
             return render(request, 'form_response.html', context)
+        
     if request.method == 'GET':
         check = 0
         params = dict(request.GET)
@@ -259,6 +259,14 @@ def bash_view(request):
 
 
                 }
+            
+            timestr = time.strftime("%Y%m%d")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public']) + 'GET' + '\n')
+            file.close()
+
             return render(request, 'form_response.html', context)
             
     
