@@ -212,9 +212,26 @@ def bash_view(request):
 
             return render(request, 'form_response.html', context)
     if request.method == 'GET':
-        hola = dict(request.GET)
-        context = {'hola': hola}
-        return render(request, 'form_response_get.html', context)
+        check = 0
+        params = dict(request.GET)
+        for k,v in params.items():
+            if k == 'reference':
+                check += 1
+            if k == 'chromosome':
+                check += 1
+            if k == 'start':
+                check += 1
+            if k == 'answer_type':
+                check += 1
+        if check > 3:
+
+            context = {
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public']),
+
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public'])
+
+                }
+            return render(request, 'form_response.html', context)
             
     
     return render(request, template, context)
