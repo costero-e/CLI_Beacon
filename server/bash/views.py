@@ -224,6 +224,34 @@ def bash_view(request):
             if k == 'answer_type':
                 check += 1
         if check > 3:
+            try:
+                if params['region']:
+                    pass
+                else:
+                    params['region']=''
+            except Exception:
+                params['region']=''
+            try:
+                if params['alt']:
+                    pass
+                else:
+                    params['alt']=''
+            except Exception:
+                params['alt']=''
+            try:
+                if params['liftover']:
+                    pass
+                else:
+                    params['liftover']=''
+            except Exception:
+                params['liftover']=''
+            try:
+                if params['public']:
+                    pass
+                else:
+                    params['public']=''
+            except Exception:
+                params['public']=''
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public']),
