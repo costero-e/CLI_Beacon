@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import subprocess
 from angelweb.forms import BamForm
+import time
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, value8):
     if isinstance(value1, list):
@@ -85,9 +86,6 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
 
         
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
-
-    bash = subprocess.check_output(['cd', '/beacon-BED-based', '&&', 'bash', 'exec-MAIN.bash', string], shell=True)
-    #bash = subprocess.check_output(['cd', '/data/boxes/beacon-BED-based'], shell=True)
 
 
     return string
@@ -174,8 +172,6 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
     
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
-
-
     
     bash_string = 'bash' + ' ' + '/beacon-BED-based/exec-MAIN.bash' + ' ' + string
 
@@ -205,6 +201,15 @@ def bash_view(request):
                 'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['alt'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
 
             }
+
+            timestr = time.strftime("%Y%m%d-%H%M%S")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['alt'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + '\n')
+            file.close()
+
+
             return render(request, 'form_response.html', context)
             
     
