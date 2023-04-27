@@ -229,6 +229,8 @@ def bash_view(request):
                     params['region'] = ''
             except Exception:
                 params['region']=''
+
+            '''
             try:
                 if params['alt'] is None:
                     params['alt']=''
@@ -243,8 +245,11 @@ def bash_view(request):
                 if params['public'] is None:
                     params['public']=''
             except Exception:
-                params['public']=''
-
+                params['liftover']=''
+            '''
+            params['alt']=''
+            params['liftover']=''
+            params['public']=''
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public']),
 
