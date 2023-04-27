@@ -228,35 +228,35 @@ def bash_view(request):
                 if params['region']:
                     pass
                 else:
-                    params['region']=''
+                    params['region']=None
             except Exception:
-                params['region']=''
+                params['region']=None
             try:
                 if params['alt']:
                     pass
                 else:
-                    params['alt']=None
+                    params['alt']=""
             except Exception:
-                params['alt']=None
+                params['alt']=""
             try:
                 if params['liftover']:
-                    pass
+                    params['liftover']=True
                 else:
-                    params['liftover']=None
+                    params['liftover']=False
             except Exception:
-                params['liftover']=None
+                params['liftover']=False
             try:
                 if params['public']:
-                    pass
+                    params['public']=True
                 else:
-                    params['public']=None
+                    params['public']=False
             except Exception:
-                params['public']=None
+                params['public']=False
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public']),
-
                     'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['alt'], params['liftover'], params['answer_type'], params['public'])
+
 
                 }
             return render(request, 'form_response.html', context)
