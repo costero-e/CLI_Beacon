@@ -206,11 +206,15 @@ def bash_view(request):
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
-            file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['alt'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + '\n')
+            file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['alt'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + 'POST' + '\n')
             file.close()
 
 
             return render(request, 'form_response.html', context)
+    if request.method == 'GET':
+        hola = dict(request.GET)
+        context = {'hola': hola}
+        return render(request, 'form_response_get.html', context)
             
     
     return render(request, template, context)
