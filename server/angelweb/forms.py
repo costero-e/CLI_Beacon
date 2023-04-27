@@ -1,10 +1,10 @@
 from django import forms
 
 class BamForm(forms.Form):
-    choices_References = [(str(x), x) for x in range(37, 39)]
+    choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
     answer_choices = [("BOOL", "BOOL"), ("COUNT", "COUNT")]
-    reference = forms.MultipleChoiceField(choices=choices_References)
+    reference = forms.ChoiceField(choices=choices_References)
     chromosome = forms.ChoiceField(choices=choices)
     start = forms.IntegerField(min_value=0, max_value=99999999999)
     region = forms.IntegerField(min_value=0, max_value=10000, required=False)
