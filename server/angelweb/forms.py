@@ -8,7 +8,7 @@ class BamForm(forms.Form):
     chromosome = forms.ChoiceField(choices=choices)
     start = forms.IntegerField(min_value=0, max_value=99999999999)
     region = forms.IntegerField(min_value=0, max_value=10000, required=False)
-    alt = forms.CharField(max_length=50, required=False)
+    mutated_allele = forms.CharField(max_length=50, required=False)
     answer_type = forms.ChoiceField(choices=answer_choices)
     liftover = forms.BooleanField(required=False)
     public = forms.BooleanField(required=False)

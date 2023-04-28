@@ -8,9 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary border border-end-0">
+    <link href="https://unpkg.com/@popperjs/core@2" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  </head>
+<body style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.11250437675070024) 0%, rgba(24,55,119,0.11250437675070024) 27%, rgba(24,81,119,1) 95%);">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border border-dark border-top-0 border-start-0 border-end-0">
         <div class="container-fluid">
           <span class="navbar-text ">
             <img src="media/logo.png" alt="EGA" height="70px">
@@ -25,10 +28,10 @@
           </div>
         </div>
       </nav>
-      <div class="container"> 
+      <div class="container pt-3" style="font-size: 14px; "> 
         <div class="row row-cols-2">
-          <div class="col">
-            <h2>Query</h2><p>Enter your values and click search.</p>
+          <div class="col-3">
+            <h3>Manual Query</h3><p>Enter your values and click search.</p>
             <form method="post">
               {% csrf_token %}
               <div class="row"><div>{{form.as_p}}</div></div>
@@ -38,28 +41,40 @@
 
 
           </div>
-          <div class="col">
-            <h2>Information</h2><p>A Beacon is a simple service that answers the question: Have you observed this mutated allele?
-              The EGA CLI Beacon searches for mutated alleles observed in somatic mutations only. The Beacon is designed to accept a query and responds with one of the three results described below.</p>
-              <h6>RESULTS</h6>
-              <div class="container">
-                
-                <div class="row row-cols-3">
-                  
-                  <div class="col border border-success border-bottom-0 border-top-0 border-end-0 border-3"><p style="color:green">TRUE</p><p>Returned when a matching mutation is found at the queried position.
-
-
-                    For an example, try this query.</p></div>
-                  <div class="col border border-danger border-bottom-0 border-top-0 border-end-0 border-3"><p style="color:red">FALSE</p><p>Returned when a mutation is found at that position but does not match the mutated allele(s).
-
-                    For an example, try this query.</p></div>
-                  <div class="col border border-black border-bottom-0 border-top-0 border-end-0 border-3"><p style="color:black">NULL</p><p>Returned when no mutation is found at the queried position in the selected dataset(s).
-
-                    For an example, try this query.</p></div>
+          <div class="col-6">
+            <h3>Instructions</h3><p>The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
+              the form with the reference of the genome, the number of the chromosome you want to query at and a start position inside the region where you want to find the genomic
+              variation. Optionally, you can also add some specific mutation allele you want to find and if the data has any liftover or public condition. To specify how you want to
+              get the result, you have to select BOOL (for Yes or No answer) or COUNT (for the number of genomic variations found for your query).
+            </p>
+              <h6>EXAMPLE QUERIES</h6>
+              <div class="row">
+                <div class="col">
+              <div class="card border-success">
+                <div class="card-header border-success">
+                  TRUE
+                </div>
+                <div class="card-body">
+                  <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position.</p>
+                  <a href="#" class="btn btn-success">Search</a>
                 </div>
               </div>
-          
             </div>
+            <div class="col">
+              <div class="card border-danger">
+                <div class="card-header border-danger">
+                  FALSE
+                </div>
+                <div class="card-body">
+                  <p class="card-text">A false query will struggle to find any genomic variation in a specific reference genome, chromosome and start position.</p>
+                  <a href="#" class="btn btn-danger">Search</a>
+                </div>
+              </div>
+            </div>
+            </div>
+
+          
+          </div>
         </div>
       </div>
 
