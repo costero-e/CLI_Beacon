@@ -35,8 +35,14 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
             <form method="post">
               {% csrf_token %}
               <div class="row"><div>{{form.as_p}}</div></div>
-                  
+              <div class="row">
+                  <div class="col-5">
                   <button type="submit" class="btn btn-primary mb-3" style="border: 1px solid #EB9662; background-color: #EB9662">Search</button>    
+                  </div>
+                  <div class="col-6">
+                  <a href="/" type="submit" class="btn btn-dark">Reset</a>
+                  </div>
+                </div>
               </form>
 
 
@@ -55,8 +61,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                   TRUE
                 </div>
                 <div class="card-body">
-                  <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position.</p>
-                  <a href="#" class="btn btn-success">Search</a>
+                  <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position. Click on Example to fill the form with a true query.</p>
+                  <a href="true" type="submit" class="btn btn-success">Example</a>
                 </div>
               </div>
             </div>
@@ -66,9 +72,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                   FALSE
                 </div>
                 <div class="card-body">
-                  <p class="card-text">A false query will struggle to find any genomic variation in a specific reference genome, chromosome and start position.</p>
-                  <a href="#" class="btn btn-danger">Search</a>
+                  <p class="card-text">A false query will struggle to find any result in a specific reference genome, chromosome and start position.  Click on Example to fill the form with a false query.</p>
+                  <a href="false" type="submit" class="btn btn-danger">Example</a>
                 </div>
+              
               </div>
             </div>
             </div>

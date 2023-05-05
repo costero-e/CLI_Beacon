@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import subprocess
-from angelweb.forms import BamForm
+from angelweb.forms import BamForm, BamFormTrue, BamFormFalse
 import time
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, value8):
@@ -272,4 +272,171 @@ def bash_view(request):
     
     return render(request, template, context)
 
+def bash_true_view(request):
+    template = "true.html"
+    form =BamFormTrue()
+    context = {'form': form}
+    if request.method == 'POST':
+        form = BamFormTrue(request.POST)
+        if form.is_valid():
+            context = {
+                'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
+
+                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
+
+            }
+
+            timestr = time.strftime("%Y%m%d")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
+            file.close()
+
+            return render(request, 'form_response.html', context)
+        
+    if request.method == 'GET':
+        check = 0
+        params = dict(request.GET)
+        for k,v in params.items():
+            if k == 'reference':
+                check += 1
+            if k == 'chromosome':
+                check += 1
+            if k == 'start':
+                check += 1
+            if k == 'answer_type':
+                check += 1
+        if check > 3:
+            try:
+                if params['region']:
+                    pass
+                else:
+                    params['region']=None
+            except Exception:
+                params['region']=None
+            try:
+                if params['mutated_allele']:
+                    pass
+                else:
+                    params['mutated_allele']=""
+            except Exception:
+                params['mutated_allele']=""
+            try:
+                if params['liftover']:
+                    params['liftover']=True
+                else:
+                    params['liftover']=False
+            except Exception:
+                params['liftover']=False
+            try:
+                if params['public']:
+                    params['public']=True
+                else:
+                    params['public']=False
+            except Exception:
+                params['public']=False
+
+            context = {
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
+
+
+                }
+            
+            timestr = time.strftime("%Y%m%d")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
+            file.close()
+
+            return render(request, 'form_response.html', context)
+            
+    
+    return render(request, template, context)
+
+def bash_false_view(request):
+    template = "false.html"
+    form =BamFormFalse()
+    context = {'form': form}
+    if request.method == 'POST':
+        form = BamFormFalse(request.POST)
+        if form.is_valid():
+            context = {
+                'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
+
+                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
+
+            }
+
+            timestr = time.strftime("%Y%m%d")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
+            file.close()
+
+            return render(request, 'form_response.html', context)
+        
+    if request.method == 'GET':
+        check = 0
+        params = dict(request.GET)
+        for k,v in params.items():
+            if k == 'reference':
+                check += 1
+            if k == 'chromosome':
+                check += 1
+            if k == 'start':
+                check += 1
+            if k == 'answer_type':
+                check += 1
+        if check > 3:
+            try:
+                if params['region']:
+                    pass
+                else:
+                    params['region']=None
+            except Exception:
+                params['region']=None
+            try:
+                if params['mutated_allele']:
+                    pass
+                else:
+                    params['mutated_allele']=""
+            except Exception:
+                params['mutated_allele']=""
+            try:
+                if params['liftover']:
+                    params['liftover']=True
+                else:
+                    params['liftover']=False
+            except Exception:
+                params['liftover']=False
+            try:
+                if params['public']:
+                    params['public']=True
+                else:
+                    params['public']=False
+            except Exception:
+                params['public']=False
+
+            context = {
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
+
+
+                }
+            
+            timestr = time.strftime("%Y%m%d")
+            file_name = timestr
+            path = '/logs/' + file_name + '.txt'
+            file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
+            file.close()
+
+            return render(request, 'form_response.html', context)
+            
+    
+    return render(request, template, context)
 # Create your views here.
