@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="media/mystyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://unpkg.com/@popperjs/core@2" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -34,7 +35,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
             <h3>Manual Query</h3><p>Enter your values and click search.</p>
             <form method="post">
               {% csrf_token %}
-              <div class="row"><div>{{form.as_p}}</div></div>
+              <div class="row"><div>{% for f in form %}
+                <p>{{f.help_text|safe}} {{f}} </p>   
+            {%endfor%}</div></div>
               <div class="row">
                   <div class="col-5">
                   <button type="submit" class="btn btn-primary mb-3" style="border: 1px solid #EB9662; background-color: #EB9662">Search</button>    
