@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="media/mystyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://unpkg.com/@popperjs/core@2" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -29,9 +30,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
           </div>
         </div>
       </nav>
-      <div class="container pt-3" style="font-size: 14px; "> 
-        <div class="row row-cols-2">
-          <div class="col-3">
+      <div class="container pt-3 " style="font-size: 14px; "> 
+        <div class="row">
+          <div class="col-3 ">
             <h3>Manual Query</h3><p>Enter your values and click search.</p>
             <form method="post">
               {% csrf_token %}
@@ -40,53 +41,108 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
             {%endfor%}</div></div>
               <div class="row">
                   <div class="col-5">
-                  <button type="submit" class="btn btn-primary mb-3" style="border: 1px solid #EB9662; background-color: #EB9662">Search</button>    
+                  <button type="submit" class="btn btn-warning mb-3">Search</button>    
                   </div>
                   <div class="col-6">
-                  <a href="/" type="submit" class="btn btn-dark">Reset</a>
+                  <a href="/" type="submit" class="btn btn-secondary">Reset</a>
                   </div>
                 </div>
               </form>
 
 
           </div>
-          <div class="col-6">
-            <h3>Instructions</h3><p>The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
+          <div class="terminal space col-6">
+    <div class="top">
+        <div class="btns">
+            <span class="circle red"></span>
+            <span class="circle yellow"></span>
+            <span class="circle green"></span>
+        </div>
+        <div class="title">bash -- 70x32</div>
+    </div>
+    <pre class="body">
+      <p class="result">
+      {% if string %}
+      <h3>Results for {{string}}</h3>
+      {% for e in bash_out %}
+      <table>
+          <tr>{{e}}</tr>
+      </table>
+
+      {% endfor %}
+      {% else %}
+        Awaiting for query...
+      
+
+    {% endif %}
+  </p>
+    </pre>
+</div>
+
+          <div class="row">
+            <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" onclick="myFunction()" style="width: 100px"> Info</button><p class="card border border-dark" id="myDIV">The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
               the form with the reference of the genome, the number of the chromosome you want to query at and a start position inside the region where you want to find the genomic
               variation. Optionally, you can also add some specific mutation allele you want to find and if the data has any liftover or public condition. To specify how you want to
               get the result, you have to select BOOL (for Yes or No answer) or COUNT (for the number of genomic variations found for your query).
             </p>
-              <h6>EXAMPLE QUERIES</h6>
-              <div class="row">
-                <div class="col">
-              <div class="card border-success">
-                <div class="card-header border-success">
-                  TRUE
-                </div>
-                <div class="card-body">
-                  <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position. Click on Example to fill the form with a true query.</p>
-                  <a href="true" type="submit" class="btn btn-success">Example</a>
-                </div>
-              </div>
             </div>
-            <div class="col">
-              <div class="card border-danger">
-                <div class="card-header border-danger">
-                  FALSE
-                </div>
-                <div class="card-body">
-                  <p class="card-text">A false query will struggle to find any result in a specific reference genome, chromosome and start position.  Click on Example to fill the form with a false query.</p>
-                  <a href="false" type="submit" class="btn btn-danger">Example</a>
+            
+            <div class="row">
+              <button class="btn btn-primary mb-3 ms-2 bi bi-file-earmark-plus-fill" onclick="myFunction2()" style="width: 100px"> Query</button>
+              <div class="row">
+                <div id="example">
+                <div class="col-4">
+                  <div class="card border-success me-2">
+                    <div class="card-header border-success">
+                      TRUE
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position. Click on Example to fill the form with a true query.</p>
+                      <a href="true" type="submit" class="btn btn-success">Example</a>
+                    </div>
+                  </div>
                 </div>
               
+                <div class="col-4">
+                  <div class="card border-danger">
+                    <div class="card-header border-danger">
+                      FALSE
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">A false query will struggle to find any result in a specific reference genome, chromosome and start position.  Click on Example to fill the form with a false query.</p>
+                      <a href="false" type="submit" class="btn btn-danger">Example</a>
+                  </div>
+                </div>
               </div>
-            </div>
-            </div>
+          </div>
+          </div>
+              </div>
+
+            
 
           
-          </div>
+
         </div>
       </div>
-
+<script>
+  function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<script>
+  function myFunction2() {
+  var x = document.getElementById("example");
+  if (x.style.display === "inline-flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "inline-flex";
+  }
+}
+</script>
 </body>
 </html>
