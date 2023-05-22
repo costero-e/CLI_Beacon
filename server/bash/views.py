@@ -209,7 +209,7 @@ def bash_view(request):
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
         
     if request.method == 'GET':
         check = 0
@@ -267,7 +267,7 @@ def bash_view(request):
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
             
     
     return render(request, template, context)
@@ -293,7 +293,7 @@ def bash_true_view(request):
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
         
     if request.method == 'GET':
         check = 0
@@ -351,7 +351,7 @@ def bash_true_view(request):
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
             
     
     return render(request, template, context)
@@ -377,7 +377,7 @@ def bash_false_view(request):
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
         
     if request.method == 'GET':
         check = 0
@@ -435,7 +435,7 @@ def bash_false_view(request):
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
             file.close()
 
-            return render(request, 'form_response.html', context)
+            return render(request, 'base.html', context)
             
     
     return render(request, template, context)
