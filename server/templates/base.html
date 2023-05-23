@@ -68,8 +68,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
       Results for {{string}}
       <table>
       {% for e in bash_out %}
-          <tr>{{e}}</tr>
-          <hr>
+          <tr class="tablerow">{{e}}</tr>
       {% endfor %}
       </table>
       {% else %}

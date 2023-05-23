@@ -116,3 +116,7 @@
 .links{
   display: inline-block;
 }
+
+.tablerow{
+  width: 100%;
+}
