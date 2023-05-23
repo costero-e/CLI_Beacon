@@ -210,7 +210,7 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-            
+
             return render(request, 'base.html', context)
             '''
 
@@ -287,21 +287,26 @@ def bash_true_view(request):
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
+            '''
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'form': form
 
             }
-
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-
+            
             return render(request, 'base.html', context)
+            '''
+
+            get_string='?reference={}&chromosome={}&start={}&answer_type={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['answer_type'])
+
+            return HttpResponseRedirect('/' + get_string)
         
     if request.method == 'GET':
         check = 0
@@ -372,21 +377,26 @@ def bash_false_view(request):
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
+            '''
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'form': form
 
             }
-
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-
+            
             return render(request, 'base.html', context)
+            '''
+
+            get_string='?reference={}&chromosome={}&start={}&answer_type={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['answer_type'])
+
+            return HttpResponseRedirect('/' + get_string)
         
     if request.method == 'GET':
         check = 0
