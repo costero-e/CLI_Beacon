@@ -197,8 +197,8 @@ def bash_view(request):
         if form.is_valid():
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
-
-                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
+                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
+                'form': form
 
             }
 
@@ -255,7 +255,8 @@ def bash_view(request):
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'form': form
 
 
                 }
@@ -281,8 +282,8 @@ def bash_true_view(request):
         if form.is_valid():
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
-
-                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
+                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
+                'form': form
 
             }
 
@@ -339,7 +340,8 @@ def bash_true_view(request):
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'form': form
 
 
                 }
@@ -365,8 +367,8 @@ def bash_false_view(request):
         if form.is_valid():
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
-
-                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public'])
+                'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
+                'form': form
 
             }
 
@@ -423,7 +425,8 @@ def bash_false_view(request):
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
+                    'bash_out': return_bash(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'form': form
 
 
                 }
