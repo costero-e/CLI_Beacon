@@ -274,7 +274,7 @@ def bash_view(request):
     return render(request, template, context)
 
 def bash_true_view(request):
-    template = "true.html"
+    template = "home.html"
     form =BamFormTrue()
     context = {'form': form}
     if request.method == 'POST':
@@ -359,7 +359,7 @@ def bash_true_view(request):
     return render(request, template, context)
 
 def bash_false_view(request):
-    template = "false.html"
+    template = "home.html"
     form =BamFormFalse()
     context = {'form': form}
     if request.method == 'POST':
