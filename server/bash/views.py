@@ -202,6 +202,8 @@ def bash_view(request):
 
             }
 
+            request.method == 'GET'
+
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
