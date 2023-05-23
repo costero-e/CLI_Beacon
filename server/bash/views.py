@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 import subprocess
 from angelweb.forms import BamForm, BamFormTrue, BamFormFalse
 import time
+from django.http import HttpResponseRedirect
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, value8):
     if isinstance(value1, list):
@@ -194,24 +195,28 @@ def bash_view(request):
     context = {'form': form}
     if request.method == 'POST':
         form = BamForm(request.POST)
+        
         if form.is_valid():
+            '''
             context = {
                 'string': return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'bash_out': return_bash(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']),
                 'form': form
 
             }
-
-            request.method == 'GET'
-
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-
+            
             return render(request, 'base.html', context)
+            '''
+
+            get_string='?reference={}&chromosome={}&start={}&answer_type={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['answer_type'])
+
+            return HttpResponseRedirect('/' + get_string)
         
     if request.method == 'GET':
         check = 0
