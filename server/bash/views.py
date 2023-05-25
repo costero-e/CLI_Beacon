@@ -355,7 +355,7 @@ def bash_view(request):
                 pass
             else:
                 try:
-                    if listin[3] <= 10000:
+                    if int(listin[3]) <= 10000:
                         pass
                     else:
                         return HttpResponseBadRequest('Bad Request')
@@ -372,6 +372,8 @@ def bash_view(request):
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
                 
+            LOG.debug(listin)
+            print(listin)
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
@@ -485,7 +487,7 @@ def bash_true_view(request):
                 pass
             else:
                 try:
-                    if listin[3] <= 10000:
+                    if int(listin[3]) <= 10000:
                         pass
                     else:
                         return HttpResponseBadRequest('Bad Request')
@@ -612,7 +614,7 @@ def bash_false_view(request):
                 pass
             else:
                 try:
-                    if listin[3] <= 10000:
+                    if int(listin[3]) <= 10000:
                         pass
                     else:
                         return HttpResponseBadRequest('Bad Request')
