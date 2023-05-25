@@ -368,10 +368,12 @@ def bash_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
+            '''
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
+            '''
 
                 
 
@@ -491,10 +493,12 @@ def bash_true_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
+            '''
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
+            '''
 
                 
 
@@ -613,12 +617,12 @@ def bash_false_view(request):
             
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
-            
+            '''
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-
+            '''
                 
 
             context = {
