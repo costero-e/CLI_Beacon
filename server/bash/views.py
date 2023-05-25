@@ -326,20 +326,7 @@ def bash_view(request):
                     params['mutated_allele']=""
             except Exception:
                 params['mutated_allele']=""
-            try:
-                if params['liftover']:
-                    params['liftover']=True
-                else:
-                    params['liftover']=False
-            except Exception:
-                params['liftover']=False
-            try:
-                if params['public']:
-                    params['public']=True
-                else:
-                    params['public']=False
-            except Exception:
-                params['public']=False
+
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
             references=['37','38']
@@ -463,20 +450,6 @@ def bash_true_view(request):
                     params['mutated_allele']=""
             except Exception:
                 params['mutated_allele']=""
-            try:
-                if params['liftover']:
-                    params['liftover']=True
-                else:
-                    params['liftover']=False
-            except Exception:
-                params['liftover']=False
-            try:
-                if params['public']:
-                    params['public']=True
-                else:
-                    params['public']=False
-            except Exception:
-                params['public']=False
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
             references=['37','38']
@@ -600,20 +573,6 @@ def bash_false_view(request):
                     params['mutated_allele']=""
             except Exception:
                 params['mutated_allele']=""
-            try:
-                if params['liftover']:
-                    params['liftover']=True
-                else:
-                    params['liftover']=False
-            except Exception:
-                params['liftover']=False
-            try:
-                if params['public']:
-                    params['public']=True
-                else:
-                    params['public']=False
-            except Exception:
-                params['public']=False
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
             references=['37','38']
