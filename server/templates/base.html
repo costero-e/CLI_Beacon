@@ -1,0 +1,152 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="media/mystyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://unpkg.com/@popperjs/core@2" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  </head>
+<body style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.11250437675070024) 0%, rgba(24,55,119,0.11250437675070024) 27%, rgba(24,81,119,1) 95%);">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border border-dark border-top-0 border-start-0 border-end-0">
+        <div class="container-fluid">
+          <span class="navbar-text ">
+            <img src="media/logo.png" alt="EGA" height="70px">
+          </span>
+          <a class="navbar-brand " href="#"><h1 class="display-6 mx-auto p-2 fw-bold ms-5" style="color: #185177">CLI Beacon</h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          </div>
+        </div>
+      </nav>
+      <div class="container pt-3 " style="font-size: 14px; "> 
+        <div class="row">
+          <button class="btn btn-primary mb-3 bi bi-search ms-2" style="width: 120px; background-color: #185177; border-color: #185177"> Query</button>
+
+        <div class="row">
+          <div class="col-3">
+            <form method="post">
+              {% csrf_token %}
+              <div class="row"><div>{% for f in form %}
+                <p>{{f.help_text|safe}} {{f}} </p>   
+            {% endfor %}</div></div>
+              <div class="row">
+                  <div class="col-5">
+                  <button type="submit" class="btn btn-warning mb-3">Search</button>    
+                  </div>
+                  <div class="col-6">
+                  <a href="/" type="submit" class="btn btn-secondary">Reset</a>
+                  </div>
+                </div>
+              </form>
+
+
+          </div>
+          <div class="terminal space col-6">
+    <div class="top">
+        <div class="btns">
+            <span class="circle red"></span>
+            <span class="circle yellow"></span>
+            <span class="circle green"></span>
+        </div>
+        <div class="title">bash -- 85x20</div>
+    </div>
+    <pre class="body">
+      <p class="result">
+      {% if string %}
+      Results for {{string}}
+      <table>
+      {% for e in bash_out %}
+          <tr class="tablerow">{{e}}</tr>
+          <br>
+      {% endfor %}
+      </table>
+      {% else %}
+        Awaiting for query...
+ 
+
+    {% endif %}
+  </p>
+    </pre>
+</div>
+
+          <div class="row">
+            <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px"> Info</button><p class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
+              the form with the reference of the genome, the number of the chromosome you want to query at and a start position inside the region where you want to find the genomic
+              variation. Optionally, you can also add some specific mutation allele you want to find and if the data has any liftover or public condition. To specify how you want to
+              get the result, you have to select BOOL (for Yes or No answer) or COUNT (for the number of genomic variations found for your query).
+            </p>
+            </div>
+            
+            <div class="row">
+              <button class="btn btn-primary mb-3 ms-2 bi bi-file-earmark-plus-fill" style="background-color: #185177; border-color: #185177" onclick="myFunction2()" style="width: 120px"> Examples</button>
+              <div class="row">
+                <div id="exampl" style="display: inline-flex">
+                <div class="col-4">
+                  <div class="card border-success me-2">
+                    <div class="card-header border-success">
+                      TRUE
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">A true query will return some results found for a specific reference genome, chromosome and start position. Click on Example to fill the form with a true query.</p>
+                      <a href="true" type="submit" class="btn btn-success">Example</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-4">
+                  <div class="card border-danger">
+                    <div class="card-header border-danger">
+                      FALSE
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">A false query will struggle to find any result in a specific reference genome, chromosome and start position.  Click on Example to fill the form with a false query.</p>
+                      <a href="false" type="submit" class="btn btn-danger">Example</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+              </div>
+
+            
+
+          
+
+        </div>
+      </div>
+      </div>
+      {% include "footer.html" %}
+<script>
+  function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<script>
+  function myFunction2() {
+  var x = document.getElementById("example");
+  if (x.style.display === "inline-flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "inline-flex";
+  }
+}
+</script>
+</body>
+</html>
