@@ -331,11 +331,9 @@ def bash_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', ['False']]
-            publics=['PUBLIC', ['False']]
+            liftovers=[['True'], ['False']]
+            publics=[['True'], ['False']]
             
-            LOG.debug(listin)
-            print(listin)
 
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
@@ -367,8 +365,7 @@ def bash_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
-            LOG.debug(listin[6])
-            LOG.debug(listin[7])
+
 
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
@@ -463,11 +460,10 @@ def bash_true_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', ['False']]
-            publics=['PUBLIC', ['False']]
+            liftovers=[['True'], ['False']]
+            publics=[['True'], ['False']]
             
-            LOG.debug(listin)
-            print(listin)
+
 
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
@@ -499,8 +495,6 @@ def bash_true_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
-            LOG.debug(listin[6])
-            LOG.debug(listin[7])
 
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
@@ -595,11 +589,8 @@ def bash_false_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', ['False']]
-            publics=['PUBLIC', ['False']]
-            
-            LOG.debug(listin)
-            print(listin)
+            liftovers=[['True'], ['False']]
+            publics=[['True'], ['False']]
 
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
