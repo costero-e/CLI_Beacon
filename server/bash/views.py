@@ -78,13 +78,13 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
     if value6 == True:
         value6 = 'LIFTOVER'
         value6 = "'" + value6 + "'"
-    elif value6 == False:
+    elif isinstance(value6,list):
         value6 = ''
         value6 = "'" + value6 + "'"
     if value8 == True:
         value8 = 'PUBLIC'
         value8 = "'" + value8 + "'"
-    elif value8 == False:
+    elif isinstance(value8,list):
         value8 = ''
         value8 = "'" + value8 + "'"
 
@@ -145,11 +145,11 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
     else:
         value7 = str(value7)
     if value6 == True:
-        value6 = 'LIFTOVER'
+        pass
     elif value6 == False:
         value6 = ''
     if value8 == True:
-        value8 = 'PUBLIC'
+        pass
     elif value8 == False:
         value8 = ''
 
@@ -235,13 +235,13 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     if value6 == True:
         value6 = 'LIFTOVER'
         value6 = "'" + value6 + "'"
-    elif value6 == False:
+    elif isinstance(value6,list):
         value6 = ''
         value6 = "'" + value6 + "'"
     if value8 == True:
         value8 = 'PUBLIC'
         value8 = "'" + value8 + "'"
-    elif value8 == False:
+    elif isinstance(value8,list):
         value8 = ''
         value8 = "'" + value8 + "'"
 
@@ -294,7 +294,7 @@ def bash_view(request):
             elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
 
             return HttpResponseRedirect('/' + get_string)
@@ -327,17 +327,16 @@ def bash_view(request):
             except Exception:
                 params['mutated_allele']=""
 
-
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'])
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', '']
-            publics=['PUBLIC', '']
+            liftovers=['LIFTOVER', ['False']]
+            publics=['PUBLIC', ['False']]
             
             LOG.debug(listin)
             print(listin)
-            
+
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
             if listin[1] not in chromosomess:
@@ -368,13 +367,13 @@ def bash_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
-            '''
+            LOG.debug(listin[6])
+            LOG.debug(listin[7])
+
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-            '''
-
                 
 
             context = {
@@ -417,11 +416,18 @@ def bash_true_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-            
+
             return render(request, 'base.html', context)
             '''
+            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
+                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['region'] != None:
+                get_string='?reference={}&chromosome={}&start={}&region={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['mutated_allele'] != '':
+                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            else:
+                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
-            get_string='?reference={}&chromosome={}&start={}&answer_type={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['answer_type'])
 
             return HttpResponseRedirect('/' + get_string)
         
@@ -457,12 +463,12 @@ def bash_true_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', '']
-            publics=['PUBLIC', '']
+            liftovers=['LIFTOVER', ['False']]
+            publics=['PUBLIC', ['False']]
             
             LOG.debug(listin)
             print(listin)
-            
+
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
             if listin[1] not in chromosomess:
@@ -493,13 +499,13 @@ def bash_true_view(request):
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
             
-            '''
+            LOG.debug(listin[6])
+            LOG.debug(listin[7])
+
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-            '''
-
                 
 
             context = {
@@ -542,11 +548,18 @@ def bash_false_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['answer_type'], form.cleaned_data['public']) + ' POST' + '\n')
             file.close()
-            
+
             return render(request, 'base.html', context)
             '''
+            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
+                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['region'] != None:
+                get_string='?reference={}&chromosome={}&start={}&region={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['mutated_allele'] != '':
+                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            else:
+                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&answer_type={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'],form.cleaned_data['answer_type'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
-            get_string='?reference={}&chromosome={}&start={}&answer_type={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['answer_type'])
 
             return HttpResponseRedirect('/' + get_string)
         
@@ -582,12 +595,12 @@ def bash_false_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['LIFTOVER', '']
-            publics=['PUBLIC', '']
+            liftovers=['LIFTOVER', ['False']]
+            publics=['PUBLIC', ['False']]
             
             LOG.debug(listin)
             print(listin)
-            
+
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
             if listin[1] not in chromosomess:
@@ -617,12 +630,14 @@ def bash_false_view(request):
             
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
-            '''
+            
+            LOG.debug(listin[6])
+            LOG.debug(listin[7])
+
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-            '''
                 
 
             context = {
