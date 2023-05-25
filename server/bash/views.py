@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 import subprocess
 from angelweb.forms import BamForm, BamFormTrue, BamFormFalse
 import time
-from django.http import HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponseRedirect
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, value8):
     if isinstance(value1, list):
@@ -224,39 +224,12 @@ def bash_view(request):
         for k,v in params.items():
             if k == 'reference':
                 check += 1
-                values = ['37', '38']
-                if v not in values:
-                    return HttpResponseBadRequest
             if k == 'chromosome':
                 check += 1
-                values = [str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
-                if v not in values:
-                    return HttpResponseBadRequest
             if k == 'start':
                 check += 1
-                values = [int(x) for x in range(0, 99999999999)]
-                if v not in values:
-                    return HttpResponseBadRequest
             if k == 'answer_type':
                 check += 1
-                values = ['BOOL', 'COUNT']
-                if v not in values:
-                    return HttpResponseBadRequest
-            if k == 'region':
-                check += 1
-                values = [int(x) for x in range(0, 10000)]
-                if v not in values:
-                    return HttpResponseBadRequest
-            if k == 'liftover':
-                check += 1
-                values = [True, False]
-                if v not in values:
-                    return HttpResponseBadRequest
-            if k == 'public':
-                check += 1
-                values = [True, False]
-                if v not in values:
-                    return HttpResponseBadRequest
         if check > 3:
             try:
                 if params['region']:
