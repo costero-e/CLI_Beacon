@@ -372,8 +372,6 @@ def bash_view(request):
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
                 
-            LOG.debug(listin)
-            print(listin)
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
@@ -623,9 +621,7 @@ def bash_false_view(request):
             
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
-            
-            LOG.debug(listin[6])
-            LOG.debug(listin[7])
+
 
             if listin[6] not in liftovers:
                 return HttpResponseBadRequest('Bad Request')
