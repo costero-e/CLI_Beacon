@@ -75,18 +75,20 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
     else:
         value7 = str(value7)
         value7 = "'" + value7 + "'"
-    if value6 == True:
-        value6 = 'LIFTOVER'
-        value6 = "'" + value6 + "'"
-    elif isinstance(value6,list):
-        value6 = ''
-        value6 = "'" + value6 + "'"
-    if value8 == True:
-        value8 = 'PUBLIC'
-        value8 = "'" + value8 + "'"
-    elif isinstance(value8,list):
-        value8 = ''
-        value8 = "'" + value8 + "'"
+    for value in value6:
+        if value == 'True':
+            value6 = 'LIFTOVER'
+            value6 = "'" + value6 + "'"
+        else:
+            value6 = ''
+            value6 = "'" + value6 + "'"
+    for value in value8:
+        if value == 'True':
+            value8 = 'PUBLIC'
+            value8 = "'" + value8 + "'"
+        else:
+            value8 = ''
+            value8 = "'" + value8 + "'"
 
         
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
