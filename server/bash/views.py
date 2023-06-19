@@ -144,14 +144,23 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
         value7 = value
     else:
         value7 = str(value7)
-    if value6 == True:
-        pass
-    elif value6 == False:
-        value6 = ''
-    if value8 == True:
-        pass
-    elif value8 == False:
-        value8 = ''
+    LOG.debug(value6)
+    LOG.debug(value8)
+
+    for value in value6:
+        if value == 'True':
+            value6 = 'LIFTOVER'
+            value6 = "'" + value6 + "'"
+        else:
+            value6 = ''
+            value6 = "'" + value6 + "'"
+    for value in value8:
+        if value == 'True':
+            value8 = 'PUBLIC'
+            value8 = "'" + value8 + "'"
+        else:
+            value8 = ''
+            value8 = "'" + value8 + "'"
 
     string_list = []
     string_list.append(value1)
@@ -162,6 +171,8 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
     string_list.append(value7)
     string_list.append(value6)
     string_list.append(value8)
+
+
 
     return string_list
 
@@ -232,20 +243,25 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     else:
         value7 = str(value7)
         value7 = "'" + value7 + "'"
-    if value6 == True:
-        value6 = 'LIFTOVER'
-        value6 = "'" + value6 + "'"
-    elif isinstance(value6,list):
-        value6 = ''
-        value6 = "'" + value6 + "'"
-    if value8 == True:
-        value8 = 'PUBLIC'
-        value8 = "'" + value8 + "'"
-    elif isinstance(value8,list):
-        value8 = ''
-        value8 = "'" + value8 + "'"
+    LOG.debug(value6)
+    print(value6)
+    LOG.debug(value8)
+    print(value8)
+    for value in value6:
+        if value == 'True':
+            value6 = 'LIFTOVER'
+            value6 = "'" + value6 + "'"
+        else:
+            value6 = ''
+            value6 = "'" + value6 + "'"
+    for value in value8:
+        if value == 'True':
+            value8 = 'PUBLIC'
+            value8 = "'" + value8 + "'"
+        else:
+            value8 = ''
+            value8 = "'" + value8 + "'"
 
-    
     string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
     
     bash_string = 'bash' + ' ' + '/beacon-BED-based/exec-MAIN.bash' + ' ' + string
@@ -331,8 +347,8 @@ def bash_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=[['True'], ['False']]
-            publics=[['True'], ['False']]
+            liftovers=['True', 'False']
+            publics=['True', 'False']
             
 
             if listin[0] not in references:
@@ -366,11 +382,12 @@ def bash_view(request):
                 return HttpResponseBadRequest('Bad Request')
             
 
-
-            if listin[6] not in liftovers:
-                return HttpResponseBadRequest('Bad Request')
-            if listin[7] not in publics:
-                return HttpResponseBadRequest('Bad Request')
+            LOG.debug(listin[6])
+            LOG.debug(listin[7])
+            #if listin[6] not in liftovers:
+            #    return HttpResponseBadRequest('Bad Request')
+            #if listin[7] not in publics:
+            #    return HttpResponseBadRequest('Bad Request')
                 
 
             context = {
