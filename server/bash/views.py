@@ -144,8 +144,6 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
         value7 = value
     else:
         value7 = str(value7)
-    LOG.debug(value6)
-    LOG.debug(value8)
 
     for value in value6:
         if value == 'True':
@@ -243,10 +241,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     else:
         value7 = str(value7)
         value7 = "'" + value7 + "'"
-    LOG.debug(value6)
-    print(value6)
-    LOG.debug(value8)
-    print(value8)
+
     for value in value6:
         if value == 'True':
             value6 = 'LIFTOVER'
@@ -347,9 +342,10 @@ def bash_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=['True', 'False']
-            publics=['True', 'False']
+            liftovers=["'LIFTOVER'", "''"]
+            publics=["'PUBLIC'", "''"]
             
+
 
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
@@ -382,12 +378,12 @@ def bash_view(request):
                 return HttpResponseBadRequest('Bad Request')
             
 
-            LOG.debug(listin[6])
-            LOG.debug(listin[7])
-            #if listin[6] not in liftovers:
-            #    return HttpResponseBadRequest('Bad Request')
-            #if listin[7] not in publics:
-            #    return HttpResponseBadRequest('Bad Request')
+
+            if listin[6] not in liftovers:
+
+                return HttpResponseBadRequest('Bad Request')
+            if listin[7] not in publics:
+                return HttpResponseBadRequest('Bad Request')
                 
 
             context = {
@@ -477,8 +473,8 @@ def bash_true_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=[['True'], ['False']]
-            publics=[['True'], ['False']]
+            liftovers=["'LIFTOVER'", "''"]
+            publics=["'PUBLIC'", "''"]
             
 
 
@@ -513,7 +509,9 @@ def bash_true_view(request):
                 return HttpResponseBadRequest('Bad Request')
             
 
+
             if listin[6] not in liftovers:
+
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
@@ -606,8 +604,10 @@ def bash_false_view(request):
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
-            liftovers=[['True'], ['False']]
-            publics=[['True'], ['False']]
+            liftovers=["'LIFTOVER'", "''"]
+            publics=["'PUBLIC'", "''"]
+            
+
 
             if listin[0] not in references:
                 return HttpResponseBadRequest('Bad Request')
@@ -638,9 +638,11 @@ def bash_false_view(request):
             
             if listin[5] not in answer_types:
                 return HttpResponseBadRequest('Bad Request')
+            
 
 
             if listin[6] not in liftovers:
+
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
