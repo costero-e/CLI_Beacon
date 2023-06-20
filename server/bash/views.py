@@ -151,14 +151,14 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
         if value == 'True':
             value6 = 'LIFTOVER'
             value6 = "'" + value6 + "'"
-        else:
+        elif value == 'False':
             value6 = ''
             value6 = "'" + value6 + "'"
     for value in value8:
         if value == 'True':
             value8 = 'PUBLIC'
             value8 = "'" + value8 + "'"
-        else:
+        elif value == 'False':
             value8 = ''
             value8 = "'" + value8 + "'"
 
