@@ -91,7 +91,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
             value8 = "'" + value8 + "'"
 
         
-    string = ' --chr' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 
     if value4:
         string = string + ' -w' + ' ' + value4 
     if value5:
@@ -280,9 +280,19 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
     new_bash_list=[]
 
+    boolean = ''
+    num_results = 0
+    list_datasets = []
+
     for item in bash_list:
         item = item.decode("utf-8") 
-        new_bash_list.append(item)
+        boolean = item[0]
+        num_results = item[1]
+        list_datasets = item[2]
+
+    new_bash_list.append(boolean)
+    new_bash_list.append(num_results)
+    new_bash_list.append(list_datasets)
 
     return new_bash_list
 
