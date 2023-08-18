@@ -270,7 +270,11 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     
     bash_string = 'cd /data/boxes/beacon-BED-based && python3 main.py' + string
 
-    bash = subprocess.check_output([bash_string], shell=True)
+    try:
+        bash = subprocess.check_output([bash_string], shell=True)
+    except subprocess.CalledProcessError as e:
+        output = e.output
+        print(output)
 
     bash_list = bash.split(b'\n')
 
