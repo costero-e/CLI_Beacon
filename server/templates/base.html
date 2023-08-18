@@ -66,25 +66,20 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
       <p class="result">
       {% if string %}
       Results for {{string}}
-        {% if bash_out %}
-          {% for e in bash_out[0] %}
+      <table>
+      {% for e in bash_out %}
+        {% if isinstance(e, list) %}
+          <tr class="tablerow">{{e}}</tr>
+          <br>
+        {% else %}
           <div>{{e}}</div>
-          {% endfor %}
-          {% for e in bash_out[1] %}
-          <div>{{e}}</div>
-          <table>
-          {% endfor %}
-          {% for e in bash_out[2] %}
-              <tr class="tablerow">{{e}}</tr>
-              <br>
-          {% endfor %}
-          </table>
-        {% endif %}
+      {% endfor %}
+      </table>
       {% else %}
-          Awaiting for query...
+        Awaiting for query...
  
 
-      {% endif %}
+    {% endif %}
   </p>
     </pre>
 </div>
