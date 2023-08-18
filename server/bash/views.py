@@ -91,8 +91,11 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
             value8 = "'" + value8 + "'"
 
         
-    string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
-
+    string = ' --chr' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 
+    if value4:
+        string = string + ' -w' + ' ' + value4 
+    if value5:
+        string = string + ' -a' + ' ' + value5
 
     return string
 
@@ -259,9 +262,13 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
             value8 = ''
             value8 = "'" + value8 + "'"
 
-    string = value1 + ' ' + value2 + ' ' + value3+ ' ' + value4 + ' ' + value5 + ' ' + value7 + ' ' + value6 + ' ' + value8
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 
+    if value4 != "''":
+        string = string + ' -w' + ' ' + value4 
+    if value5 != "''":
+        string = string + ' -a' + ' ' + value5
     
-    bash_string = 'bash' + ' ' + '/beacon-BED-based/exec-MAIN.bash' + ' ' + string
+    bash_string = 'cd /data/boxes/beacon-BED-based && python3 main.py' + string
 
     bash = subprocess.check_output([bash_string], shell=True)
 
