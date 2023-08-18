@@ -70,38 +70,37 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
             <div class="col" style="border: 1px solid yellow">
               <button class="btn btn-primary mb-3 bi bi-table ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Results</button>
               {% if string %}
-              {% if boolean is False %}<div class="false"><b style="color: red;">{{boolean}}</b>
-                <div class="numresults"><b>{{numresults}} results:</b></div>
-                <table>
+                {% if datasets %}<div class="true"><b style="color: green;">{{boolean}}</b>
+                  <div class="numresults"><b>{{numresults}} results:</b></div>
+                  <table>
+                    {% for e in datasets %}
+                    <tr>
+                      <td>{{e}}</td>
+                    </tr>
 
-                  <tr>
-                    {{datasets}}
-                  </tr>
+                {% endfor %}
+              </table>
+                </div>{% endif %}
+                {% else %}<div class="false"><b style="color: red;">{{boolean}}</b>
+                  <div class="numresults"><b>{{numresults}} results:</b></div>
+                  <table>
+                    {% for e in datasets %}
+                    <tr>
+                      <td>{{e}}</td>
+                    </tr>
 
-            </table>
-          </div>
-              {% endif %}
-              {% if boolean is True %}<div class="true"><b style="color: green;">{{boolean}}</b>
-                <div class="numresults"><b>{{numresults}} results:</b></div>
-                <table>
-                  {% for e in datasets %}
-                  <tr>
-                    <td>{{e}}</td>
-                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+                {% endif %}
 
-              {% endfor %}
-            </table>
-              </div>{% endif %}
 
               {% else %}
               <div class="false"><b style="color: red;">False</b>
                 <div class="numresults"><b>0 results:</b></div>
                 <table>
                   <tr>
-                    Hola
-                  </tr>
-                  <tr>
-                    Prova dataset
+                    <td></td>
                   </tr>
                 </table>
               </div>
