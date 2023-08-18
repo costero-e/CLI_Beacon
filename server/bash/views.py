@@ -268,7 +268,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
     if value5 != "''":
         string = string + ' -a' + ' ' + value5
     
-    bash_string = 'cd /data/boxes/beacon-BED-based && python3 main.py' + string
+    bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
     try:
         bash = subprocess.check_output([bash_string], shell=True)
