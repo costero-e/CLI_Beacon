@@ -280,20 +280,19 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
 
     new_bash_list=[]
 
-    for item in bash_list:
-        item = item.decode("utf-8") 
-        item = item.replace('[', '')
-        item = item.replace(']', '')
-        item = item.replace('(', '')
-        item = item.replace(')', '')
-        item = item.replace(' ', '')
-        print("item is: {}".format(item))
-        item_list = item.split(',')
-        print("item_list is: {}".format(item_list))
-        boolean = item_list[0]
-        print("boolean: {}". format(boolean))
-        num_results = item_list[1]
-        datasets_list = item_list[2:-1]
+    item = bash_list[0].decode("utf-8") 
+    item = bash_list[0].replace('[', '')
+    item = bash_list[0].replace(']', '')
+    item = bash_list[0].replace('(', '')
+    item = bash_list[0].replace(')', '')
+    item = bash_list[0].replace(' ', '')
+    print("item is: {}".format(item))
+    item_list = item.split(',')
+    print("item_list is: {}".format(item_list))
+    boolean = item_list[0]
+    print("boolean: {}". format(boolean))
+    num_results = item_list[1]
+    datasets_list = item_list[2:-1]
     
     new_bash_list.append(boolean)
     new_bash_list.append(num_results)
