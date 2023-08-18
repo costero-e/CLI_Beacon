@@ -541,6 +541,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, valu
         num_results = item_list[1]
         end = len(item_list)
         datasets_list = item_list[2:end]
+        print("datasets_list: {}". format(datasets_list))
 
         break
     
