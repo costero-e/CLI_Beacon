@@ -286,6 +286,8 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         item = item.replace('(', '')
         item = item.replace(')', '')
         item = item.replace(' ', '')
+        item = item.replace("'", '')
+        item = item.replace('"', '')
         print("item is: {}".format(item))
         item_list = item.split(',')
         print("item_list is: {}".format(item_list))
@@ -294,6 +296,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         num_results = item_list[1]
         end = len(item_list)
         datasets_list = item_list[2:end]
+
         break
     
     new_bash_list.append(boolean)

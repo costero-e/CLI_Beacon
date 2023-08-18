@@ -66,8 +66,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
       <p class="result">
       {% if string %}
       Results for {{string}}
+      <div>{{bash_out[0]}}</div>
+      <div>{{bash_out[1]}}</div>
       <table>
-      {% for e in bash_out %}
+      {% for e in bash_out[2] %}
           <tr class="tablerow">{{e}}</tr>
           <br>
       {% endfor %}
