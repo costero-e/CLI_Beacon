@@ -71,8 +71,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
               <button class="btn btn-primary mb-3 bi bi-table ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Results</button>
               {% if string %}
                 {% if datasets %}
-                <div>Results for: {{string}}</div>
-                <div class="true"><b style="color: green;">{{boolean}}</b>
+                <div class="true">Results for: {{string}}
+                <div><b style="color: green;">{{boolean}}</b></div>
                   <div class="numresults"><b>{{num_results}} results:</b></div>
                   <table>
                     {% for e in datasets %}
@@ -84,8 +84,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
               </table>
                 </div>{% endif %}
                 {% if not datasets %}
-                <div>Results for: {{string}}</div>
-                <div class="false"><b style="color: red;">{{boolean}}</b>
+                <div class="false">Results for: {{string}}
+                <div><b style="color: red;">{{boolean}}</b></div>
                   <div class="numresults"><b>{{numresults}} results:</b></div>
                   <table>
                     {% for e in datasets %}
