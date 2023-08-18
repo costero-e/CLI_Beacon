@@ -66,20 +66,20 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
       <p class="result">
       {% if string %}
       Results for {{string}}
+      <div>{{boolean}}</div>
+      <div>{{num_results}}</div>
       <table>
-      {% for e in bash_out %}
-        {% if isinstance(e, list) %}
+      {% for e in datasets %}
           <tr class="tablerow">{{e}}</tr>
           <br>
-        {% else %}
-          <div>{{e}}</div>
+
       {% endfor %}
       </table>
       {% else %}
         Awaiting for query...
  
 
-    {% endif %}
+      {% endif %}
   </p>
     </pre>
 </div>
