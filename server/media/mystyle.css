@@ -13,7 +13,6 @@
 .terminal .btns {
     position: absolute;
     top: 7px;
-    left: 5px;
     margin-left: 15px;
 }
 .terminal .circle {
@@ -118,3 +117,93 @@
   display: inline-block;
 }
 
+.results{
+  position: relative;
+  display: inline;
+}
+
+tr {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+th[scope='col'] {
+  background-color: #696969;
+  color: #fff;
+}
+
+th[scope='row'] {
+  background-color: #d7d9f2;
+}
+
+caption {
+  padding: 10px;
+  caption-side: bottom;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgba(0,0,0,0.11);
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  display: block;
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.false {
+  padding: 1rem;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+    0 5px 15px 0 rgba(0,0,0,0.08);
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  
+  border-left: 1px solid red;
+  transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+}
+
+.false:hover {
+  padding-left: 0.5rem;
+  border-left: 0.5rem solid #EC6A5F;
+}
+
+.false > :first-child {
+  margin-top: 0;
+}
+
+.false > :last-child {
+  margin-bottom: 0;
+}
+
+.true {
+  padding: 1rem;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+    0 5px 15px 0 rgba(0,0,0,0.08);
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  
+  border-left: 1px solid green;
+  transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+}
+
+.true:hover {
+  padding-left: 0.5rem;
+  border-left: 0.5rem solid #00ff99;
+}
+
+.true > :first-child {
+  margin-top: 0;
+}
+
+.true > :last-child {
+  margin-bottom: 0;
+}

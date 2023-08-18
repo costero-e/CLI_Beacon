@@ -30,59 +30,94 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
           </div>
         </div>
       </nav>
+      
       <div class="container pt-3 " style="font-size: 14px; "> 
-        <div class="row">
-          <button class="btn btn-primary mb-3 bi bi-search ms-2" style="width: 120px; background-color: #185177; border-color: #185177"> Query</button>
+        <div class="col">
+          <div class="containerfirst">
+            <div class="row" style="border:1px solid red;">
 
-          <div class="row">
-          <div class="col-3">
-            <form method="post">
-              {% csrf_token %}
-              <div class="row"><div>{% for f in form %}
-                <p>{{f.help_text|safe}} {{f}} </p>   
-            {% endfor %}</div></div>
+            <div class="col-3" style="border:1px solid yellow;" style="display: inline">
+              <button class="btn btn-primary mb-3 bi bi-search ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Query</button>
+
+              <div class="row">
+                <div class="col">
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="row"><div>
+                    {% for f in form %}
+                    <p>{{f.help_text|safe}} {{f}} </p>   
+                    {% endfor %}
+                </div>
+              </div>
               <div class="row">
                   <div class="col-5">
-                  <button type="submit" class="btn btn-warning mb-3">Search</button>    
+                    <button type="submit" class="btn btn-warning mb-3">Search</button>    
                   </div>
                   <div class="col-6">
-                  <a href="/" type="submit" class="btn btn-secondary">Reset</a>
+                    <a href="/" type="submit" class="btn btn-secondary">Reset</a>
                   </div>
-                </div>
-              </form>
+              </div>
+                  </form>
+            </div>
 
+            </div>
+              <div>
+            </div>
 
+              
+                
+            </div>  
+            <div class="col" style="border: 1px solid yellow">
+              <button class="btn btn-primary mb-3 bi bi-table ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Results</button>
+              {% if string %}
+              Results for {{string}}
+              {% if boolean is False %}<div class="false"><b style="color: red;">{{boolean}}</b>
+                <div class="numresults"><b>{{numresults}} results:</b></div>
+                <table>
+                  {% for e in datasets %}
+                  <tr>
+                    <td>{{e}}</td>
+                  </tr>
+
+              {% endfor %}
+            </table>
           </div>
-          <div class="terminal space col-6">
-    <div class="top">
-        <div class="btns">
-            <span class="circle red"></span>
-            <span class="circle yellow"></span>
-            <span class="circle green"></span>
+              {% endif %}
+              {% if boolean is True %}<div class="true"><b style="color: green;">{{boolean}}</b>
+                <div class="numresults"><b>{{numresults}} results:</b></div>
+                <table>
+                  {% for e in datasets %}
+                  <tr>
+                    <td>{{e}}</td>
+                  </tr>
+
+              {% endfor %}
+            </table>
+              </div>{% endif %}
+
+              {% else %}
+              <div class="false"><b style="color: red;">False</b>
+                <div class="numresults"><b>0 results:</b></div>
+                <table>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+              
+
+         
+        
+              {% endif %}
+            
+            </div>
+          </div>
         </div>
-        <div class="title">bash -- 85x20</div>
-    </div>
-    <pre class="body">
-      <p class="result">
-      {% if string %}
-      Results for {{string}}
-      <div>{{boolean}}</div>
-      <div>{{num_results}}</div>
-      <table>
-      {% for e in datasets %}
-          <tr class="tablerow">{{e}}</tr>
-          <br>
 
-      {% endfor %}
-      </table>
-      {% else %}
-        Awaiting for query...
- 
+        
 
-      {% endif %}
-  </p>
-    </pre>
-</div>
+
+
 
           <div class="row">
             <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px"> Info</button><p class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
