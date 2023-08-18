@@ -292,7 +292,7 @@ def return_bash(value1, value2, value3, value4, value5, value6, value7, value8):
         boolean = item_list[0]
         print("boolean: {}". format(boolean))
         num_results = item_list[1]
-        datasets_list = item_list[2:-1]
+        datasets_list = item_list[1:-1]
         break
     
     new_bash_list.append(boolean)
