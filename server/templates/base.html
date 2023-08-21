@@ -77,7 +77,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                   <div class="numresults"><b>{{num_results}} results:</b></div>
                   <table>
                     <tr>
-                      <th scope="col"  ><div id="header" onclick="sortTable(0, 'EGAtable'); classToggle()" class="bi bi-caret-down-fill">EGA dataset</div></th>
+                      <th scope="col"  ><div id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</div></th>
                       <th scope="col">Desc dataset</th>
                     </tr>
                     {% for key,value in datasets.items %}
@@ -98,7 +98,23 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
 
 
               {% else %}
-
+              <div class="false"><b style="color: red;">False</b>
+                <div class="numresults"><b>0 results:</b></div>
+                <table id="EGAtable">
+                  <tr>
+                    <th scope="col"  ><div id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</div></th>
+                    <th scope="col">Desc dataset</th>
+                  </tr>
+                  <tr>
+                    <td>gnomad1</td>
+                    <td>EGAh1</td>
+                  </tr>
+                  <tr>
+                    <td>haogan2</td>
+                    <td>asdas2</td>
+                  </tr>
+                </table>
+              </div>
               
 
          
