@@ -208,23 +208,33 @@ table {
 .true > :last-child {
   margin-bottom: 0;
 }
-.up-arrow {
-  width: 0;
-  height: 0;
-  border: solid 5px transparent;
-  background: transparent;
-  border-bottom: solid 7px black;
-  border-top-width: 0;
-  cursor: pointer;
+
+.sortable th:hover::after {
+  color: inherit;
+  font-size: 1.2em;
+  content: '\00a0\025B8';
 }
 
-.down-arrow {
-  width: 0;
-  height: 0;
-  border: solid 5px transparent;
-  background: transparent;
-  border-top: solid 7px black;
-  border-bottom-width: 0;
-  margin-top:1px;
-  cursor: pointer;
+.sortable th::after {
+  font-size: 1.2em;
+  color: transparent;
+  content: '\00a0\025B8';
+}
+
+.sortable th.dir-d::after {
+  color: inherit;
+  content: '\00a0\025BE';
+}
+
+.sortable th.dir-u::after {
+  color: inherit;
+  content: '\00a0\025B4';
+}
+
+th.no-sort {
+  pointer-events: none;
+}
+
+th.no-sort::after {
+  content: none;
 }
