@@ -544,9 +544,23 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, valu
         print("datasets_list: {}". format(datasets_list))
 
         break
+
+    i=1
+    dataset_dict={}
+    last_element=''
+    for element in datasets_list:
+        if isinstance(i/2,int):
+            dataset_dict[element]=''
+            last_element=element
+        else:
+            dataset_dict[last_element]=element
+        i+=1
+
+
+
     
 
-    return datasets_list
+    return dataset_dict
 
 
 def bash_view(request):

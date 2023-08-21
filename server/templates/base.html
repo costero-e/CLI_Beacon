@@ -75,9 +75,14 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                 <div><b style="color: green;">{{boolean}}</b></div>
                   <div class="numresults"><b>{{num_results}} results:</b></div>
                   <table>
-                    {% for e in datasets %}
                     <tr>
-                      <td>{{e}}</td>
+                      <th scope="col">EGA dataset</th>
+                      <th scope="col">Desc dataset</th>
+                    </tr>
+                    {% for key,value in datasets.items %}
+                    <tr>
+                      <td>{{key}}</td>
+                      <td>{{value}}</td>
                     </tr>
 
                 {% endfor %}
@@ -86,15 +91,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                 {% if not datasets %}
                 <div class="false">Results for: {{string}}
                 <div><b style="color: red;">{{boolean}}</b></div>
-                  <div class="numresults"><b>{{numresults}} results:</b></div>
-                  <table>
-                    {% for e in datasets %}
-                    <tr>
-                      <td>{{e}}</td>
-                    </tr>
-
-                {% endfor %}
-              </table>
+                  <div class="numresults"><b>{{numresults}} results</b></div>
             </div>
                 {% endif %}
 
@@ -104,7 +101,16 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                 <div class="numresults"><b>0 results:</b></div>
                 <table>
                   <tr>
-                    <td></td>
+                    <th scope="col">EGA dataset</th>
+                    <th scope="col">Desc dataset</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>2</td>
                   </tr>
                 </table>
               </div>

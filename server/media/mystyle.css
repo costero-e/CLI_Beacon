@@ -122,9 +122,11 @@
   display: inline;
 }
 
-tr {
+td,
+th {
   border: 1px solid rgb(190, 190, 190);
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 td {
@@ -151,7 +153,6 @@ caption {
 
 table {
   border-collapse: collapse;
-  border: 2px solid rgba(0,0,0,0.11);
   letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
