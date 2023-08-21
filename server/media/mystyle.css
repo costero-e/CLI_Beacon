@@ -208,3 +208,27 @@ table {
 .true > :last-child {
   margin-bottom: 0;
 }
+
+.none {
+  padding: 1rem;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+    0 5px 15px 0 rgba(0,0,0,0.08);
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  
+  border-left: 1px solid grey;
+  transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+}
+
+.none:hover {
+  padding-left: 0.5rem;
+  border-left: 0.5rem solid grey;
+}
+
+.none > :first-child {
+  margin-top: 0;
+}
+
+.none > :last-child {
+  margin-bottom: 0;
+}
