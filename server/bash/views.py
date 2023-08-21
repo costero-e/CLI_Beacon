@@ -545,16 +545,14 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, valu
 
         break
 
-    i=2
     dataset_dict={}
     last_element=''
     for element in datasets_list:
-        if isinstance(i/2,int):
-            dataset_dict[element]=''
-            last_element=element
-        else:
+        if last_element != element and last_element != '':
             dataset_dict[last_element]=element
-        i+=1
+            last_element=''
+        else:
+            last_element=element
     print("datasets_dict: {}". format(dataset_dict))
 
 
