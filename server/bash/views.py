@@ -555,6 +555,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, valu
         else:
             dataset_dict[last_element]=element
         i+=1
+    print("datasets_dict: {}". format(dataset_dict))
 
 
 
