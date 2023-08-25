@@ -2,6 +2,10 @@
 
 version: "3.8"
 
+networks:
+  my-app-network:
+    external: true
+
 services:
 
   server:
@@ -13,3 +17,5 @@ services:
       - 8003:8000
     volumes:
       - ./server:/usr/src/app
+    networks:
+      - my-app-network

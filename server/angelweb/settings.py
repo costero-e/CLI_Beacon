@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bash',
-    'crispy_forms'
+    'crispy_forms',
+    'mozilla_django_oidc'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+]
+
+OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
+OIDC_RP_CLIENT_SECRET = env('OIDC_RP_CLIENT_SECRET')
+
+OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:8080/auth/realms/Beacon/protocol/openid-connect/auth"
+OIDC_OP_TOKEN_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/token"
+OIDC_OP_USER_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/userinfo"
+
+LOGIN_REDIRECT_URL = "http://localhost:8003"
+LOGOUT_REDIRECT_URL = "http://localhost:8003"
+
+	
+OIDC_RP_SIGN_ALGO = 'RS256'
+OIDC_OP_JWKS_ENDPOINT = 'http://idp:8080/auth/realms/Beacon/protocol/openid-connect/certs'
