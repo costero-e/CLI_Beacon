@@ -140,13 +140,20 @@ AUTHENTICATION_BACKENDS = [
 OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
 OIDC_RP_CLIENT_SECRET = env('OIDC_RP_CLIENT_SECRET')
 
-OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:8080/auth/realms/Beacon/protocol/openid-connect/auth"
-OIDC_OP_TOKEN_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/token"
-OIDC_OP_USER_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/userinfo"
+#OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:8080/auth/realms/Beacon/protocol/openid-connect/auth"
+#OIDC_OP_TOKEN_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/token"
+#OIDC_OP_USER_ENDPOINT = "http://idp:8080/auth/realms/Beacon/protocol/openid-connect/userinfo"
 
-LOGIN_REDIRECT_URL = "http://localhost:8003"
-LOGOUT_REDIRECT_URL = "http://localhost:8003"
+OIDC_OP_AUTHORIZATION_ENDPOINT = "https://beacon-network-demo2.ega-archive.org/auth/realms/Beacon/protocol/openid-connect/auth"
+OIDC_OP_TOKEN_ENDPOINT = "https://beacon-network-demo2.ega-archive.org/auth/realms/Beacon/protocol/openid-connect/token"
+OIDC_OP_USER_ENDPOINT = "https://beacon-network-demo2.ega-archive.org/auth/realms/Beacon/protocol/openid-connect/userinfo"
+
+#LOGIN_REDIRECT_URL = "http://localhost:8003"
+#LOGOUT_REDIRECT_URL = "http://localhost:8003"
+LOGIN_REDIRECT_URL = "https://beacon-test.ega-archive.org"
+LOGOUT_REDIRECT_URL = "https://beacon-test.ega-archive.org"
 
 	
 OIDC_RP_SIGN_ALGO = 'RS256'
-OIDC_OP_JWKS_ENDPOINT = 'http://idp:8080/auth/realms/Beacon/protocol/openid-connect/certs'
+#OIDC_OP_JWKS_ENDPOINT = 'http://idp:8080/auth/realms/Beacon/protocol/openid-connect/certs'
+OIDC_OP_JWKS_ENDPOINT = 'https://beacon-network-demo2.ega-archive.org/auth/realms/Beacon/protocol/openid-connect/certs'
