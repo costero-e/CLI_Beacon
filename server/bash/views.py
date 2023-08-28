@@ -566,7 +566,10 @@ def bash_view(request):
     template = "home.html"
     form =BamForm()
     context = {'form': form}
-    current_email=request.user.email
+    if request.user.is_authenticated:
+        current_email=request.user.email
+        print(current_email)
+        LOG.debug(current_email)
     if request.method == 'POST':
         form = BamForm(request.POST)
         
@@ -701,7 +704,10 @@ def bash_true_view(request):
     template = "home.html"
     form =BamFormTrue()
     context = {'form': form}
-    current_email=request.user.email
+    if request.user.is_authenticated:
+        current_email=request.user.email
+        print(current_email)
+        LOG.debug(current_email)
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
@@ -835,7 +841,10 @@ def bash_false_view(request):
     template = "home.html"
     form =BamFormFalse()
     context = {'form': form}
-    current_email=request.user.email
+    if request.user.is_authenticated:
+        current_email=request.user.email
+        print(current_email)
+        LOG.debug(current_email)
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
