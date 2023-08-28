@@ -8,7 +8,7 @@ import logging
 
 LOG = logging.getLogger(__name__)
 
-def return_string(value1, value2, value3, value4, value5, value6, value7, value8):
+def return_string(value1, value2, value3, value4, value5, value6, value7, value8, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -179,7 +179,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
 
     return string_list
 
-def return_boolean(value1, value2, value3, value4, value5, value6, value7, value8):
+def return_boolean(value1, value2, value3, value4, value5, value6, value7, value8, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -301,7 +301,7 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, value
 
     return boolean
 
-def return_num_results(value1, value2, value3, value4, value5, value6, value7, value8):
+def return_num_results(value1, value2, value3, value4, value5, value6, value7, value8, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -424,7 +424,7 @@ def return_num_results(value1, value2, value3, value4, value5, value6, value7, v
 
     return num_results
 
-def return_datasets(value1, value2, value3, value4, value5, value6, value7, value8):
+def return_datasets(value1, value2, value3, value4, value5, value6, value7, value8, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -566,6 +566,7 @@ def bash_view(request):
     template = "home.html"
     form =BamForm()
     context = {'form': form}
+    current_email=request.user.email
     if request.method == 'POST':
         form = BamForm(request.POST)
         
@@ -675,10 +676,10 @@ def bash_view(request):
                 
 
             context = {
-                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
                     'form': form
 
 
@@ -700,6 +701,7 @@ def bash_true_view(request):
     template = "home.html"
     form =BamFormTrue()
     context = {'form': form}
+    current_email=request.user.email
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
@@ -808,10 +810,10 @@ def bash_true_view(request):
                 
 
             context = {
-                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
                     'form': form
 
 
@@ -833,6 +835,7 @@ def bash_false_view(request):
     template = "home.html"
     form =BamFormFalse()
     context = {'form': form}
+    current_email=request.user.email
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
@@ -941,10 +944,10 @@ def bash_false_view(request):
                 
 
             context = {
-                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
-                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']),
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
+                    'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email),
                     'form': form
 
 
