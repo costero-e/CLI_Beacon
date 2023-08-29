@@ -253,3 +253,6 @@ table {
   box-shadow: 0 0 20px rgba(85, 103, 224, 0.6);
   background-color: rgba(85, 103, 224, 1);
 }
+.welcome{
+  margin-top: 15px;
+}
