@@ -570,6 +570,8 @@ def bash_view(request):
         current_email=request.user.email
         print(current_email)
         LOG.debug(current_email)
+    else:
+        current_email = ''
     if request.method == 'POST':
         form = BamForm(request.POST)
         
@@ -708,6 +710,8 @@ def bash_true_view(request):
         current_email=request.user.email
         print(current_email)
         LOG.debug(current_email)
+    else:
+        current_email = ''
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
@@ -845,6 +849,8 @@ def bash_false_view(request):
         current_email=request.user.email
         print(current_email)
         LOG.debug(current_email)
+    else:
+        current_email = ''
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
