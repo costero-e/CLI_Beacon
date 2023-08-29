@@ -692,7 +692,7 @@ def bash_view(request):
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
-            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email) + ' GET' + '\n')
             file.close()
 
             return render(request, 'base.html', context)
@@ -829,7 +829,7 @@ def bash_true_view(request):
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
-            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email) + ' GET' + '\n')
             file.close()
 
             return render(request, 'base.html', context)
@@ -966,7 +966,7 @@ def bash_false_view(request):
             file_name = timestr
             path = '/logs/' + file_name + '.txt'
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
-            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public']) + ' GET' + '\n')
+            file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], params['public'], current_email) + ' GET' + '\n')
             file.close()
 
             return render(request, 'base.html', context)
