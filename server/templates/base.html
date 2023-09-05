@@ -79,55 +79,16 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
             </div>  
             <div class="col">
               <button class="btn btn-primary mb-3 bi bi-table ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Results</button>
-              {% if string %}
-                {% if datasets %}
-                <div class="true">Results for: {{string}}
-                <div><b style="color: green;">{{boolean}}</b></div>
-                  <div class="numresults"><b>{{num_results}} matches of variants found in the next datasets:</b></div>
-                  <table id="EGAtable">
-                    <tr>
-                      <th scope="col" id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</th>
-                      <th scope="col">Desc dataset</th>
-                    </tr>
-                    {% for key,value in datasets.items %}
-                    <tr>
-                      <td>{{key}}</td>
-                      <td>{{value}}</td>
-                    </tr>
-
-                {% endfor %}
-              </table>
-                </div>{% endif %}
-                {% if not datasets %}
-                <div class="false">Results for: {{string}}
-                <div><b style="color: red;">{{boolean}}</b></div>
-                  <div class="numresults"><b>{{numresults}} results</b></div>
-            </div>
+              {% if bash_out %}
+              {{bash_out}}
                 {% endif %}
 
 
-              {% else %}
-              <div class="none">Try some search by filling the Query form
-                <div class="numresults"><b>No results to display</b></div>
 
-                <table id="EGAtable">
-                  <tr>
-                    <th scope="col" id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</th>
-                    <th scope="col">Desc dataset</th>
-                  </tr>
-                  <tr>
-
-                  </tr>
-                  <tr>
-
-                  </tr>
-                </table>
-              </div>
               
 
          
         
-              {% endif %}
             
             </div>
           </div>
