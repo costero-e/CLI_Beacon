@@ -6,6 +6,8 @@ import time
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 import logging
 
+import json
+
 LOG = logging.getLogger(__name__)
 
 def verify_command(value):
@@ -16,14 +18,12 @@ def verify_command(value):
 
     try:
         bash = subprocess.check_output([bash_string], shell=True)
+        bash = str(bash)
+        bash = bash.replace('\n','')
+        bash = json.loads(bash)
     except subprocess.CalledProcessError as e:
         bash = e.output
         print(bash)
-
-
-
-
-    
 
     return bash
 
