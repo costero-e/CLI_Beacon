@@ -253,10 +253,6 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, curre
     if value6 == "'LIFTOVER'":
         string = string + ' --liftover'
 
-    if current_email:
-        string = string +  ' --email' + ' ' + str(current_email)
-    if value6 == "'LIFTOVER'":
-        string = string + ' --liftover'
     print(string)
     if value4 != "''":
         string = string + ' -w' + ' ' + value4 
