@@ -8,13 +8,7 @@ class BamForm(forms.Form):
         if region > 0:
             # Here we're raising a ValidationError that refers to a specific
             # field so the error is better pointed out to the user.
-            raise ValidationError({
-                'available_till': ValidationError(
-                    'If you fill in available_from field, you also need to '
-                    'fill out available_till.', 
-                    code='required'
-                )
-            })
+            raise ValidationError("You can't fill mutated allele if region is filled")
 
         return self.cleaned_data
             
