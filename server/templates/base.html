@@ -100,6 +100,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
               </table>
                 </div>{% endif %}
                 {% if not datasets %}
+                {% if boolean == true %}
                 <div class="true">Results for: {{string}}
                   <div><b style="color: green;">{{boolean}}</b></div>
                     <div class="numresults"><b>{{num_results}} matches of variants found</b></div>
@@ -109,6 +110,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                   <div><b style="color: red;">{{boolean}}</b></div>
                     <div class="numresults"><b>{{numresults}} results</b></div>
               </div>
+                {% endif %}
                 {% endif %}
               {% else %}
               <div class="none">Try some search by filling the Query form
