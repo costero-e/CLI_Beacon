@@ -374,6 +374,12 @@ def return_num_results(value1, value2, value3, value4, value5, value6, value7, c
         string = string +  ' --email' + ' ' + str(current_email)
     if value6 == "'LIFTOVER'":
         string = string + ' --liftover'
+
+    print(string)
+    if value4 != "''":
+        string = string + ' -w' + ' ' + value4 
+    if value5 != "''":
+        string = string + ' -a' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -491,6 +497,12 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         string = string +  ' --email' + ' ' + str(current_email)
     if value6 == "'LIFTOVER'":
         string = string + ' --liftover'
+
+    print(string)
+    if value4 != "''":
+        string = string + ' -w' + ' ' + value4 
+    if value5 != "''":
+        string = string + ' -a' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -520,7 +532,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         num_results = item_list[1]
         end = len(item_list)
         datasets_list = item_list[2:end]
-        print("datasets_list: {}". format(datasets_list))
 
         break
 
@@ -622,6 +633,12 @@ def return_num_datasets(value1, value2, value3, value4, value5, value6, value7, 
         string = string +  ' --email' + ' ' + str(current_email)
     if value6 == "'LIFTOVER'":
         string = string + ' --liftover'
+
+    print(string)
+    if value4 != "''":
+        string = string + ' -w' + ' ' + value4 
+    if value5 != "''":
+        string = string + ' -a' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -651,7 +668,6 @@ def return_num_datasets(value1, value2, value3, value4, value5, value6, value7, 
         num_results = item_list[1]
         end = len(item_list)
         datasets_list = item_list[2:end]
-        print("datasets_list: {}". format(datasets_list))
 
         break
 
