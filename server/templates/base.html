@@ -81,9 +81,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
               <button class="btn btn-primary mb-3 bi bi-table ms-2" style="width: 120px; background-color: #185177; height: 45px; border-color: #185177"> Results</button>
               {% if string %}
                 {% if datasets %}
+                  
                 <div class="true">Results for: {{string}}
                 <div><b style="color: green;">{{boolean}}</b></div>
-                  <div class="numresults"><b>{{num_results}} matches of variants found in the next datasets:</b></div>
+                  <div class="numresults"><b>{{num_results}} matches of variants found in the next {{num_datasets}} datasets:</b></div>
                   <table id="EGAtable">
                     <tr>
                       <th scope="col" id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</th>
@@ -99,13 +100,16 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
               </table>
                 </div>{% endif %}
                 {% if not datasets %}
-                <div class="false">Results for: {{string}}
-                <div><b style="color: red;">{{boolean}}</b></div>
-                  <div class="numresults"><b>{{numresults}} results</b></div>
-            </div>
+                <div class="true">Results for: {{string}}
+                  <div><b style="color: green;">{{boolean}}</b></div>
+                    <div class="numresults"><b>{{num_results}} matches of variants found</b></div>
                 {% endif %}
-
-
+                {% if boolean == false %}
+                <div class="false">Results for: {{string}}
+                  <div><b style="color: red;">{{boolean}}</b></div>
+                    <div class="numresults"><b>{{numresults}} results</b></div>
+              </div>
+                {% endif %}
               {% else %}
               <div class="none">Try some search by filling the Query form
                 <div class="numresults"><b>No results to display</b></div>
