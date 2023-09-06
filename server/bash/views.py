@@ -774,7 +774,7 @@ def bash_view(request):
                     'boolean': return_boolean(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], current_email),
                     'num_results': return_num_results(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], current_email),
                     'datasets': return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], current_email),
-                    'num_datasets': return_num_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], current_email),
+                    #'num_datasets': return_num_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'], current_email),
                     'form': form
 
 
