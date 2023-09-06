@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.initial['region'] = 0
+        self.initial['region'] = 1
 
         region = self.fields.get('region')
         if region != 0:
