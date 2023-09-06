@@ -28,7 +28,7 @@ class BamForm(forms.Form):
                 )
             })
 
-        return self.cleaned_data
+
             
 
 
