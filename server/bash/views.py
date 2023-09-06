@@ -84,10 +84,12 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
             value6 = "'" + value6 + "'"
 
         
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
+
     if current_email:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email) + ' --liftover' + value6
-    else:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 + ' --liftover' + value6
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
     print(string)
     if value4:
         string = string + ' -w' + ' ' + value4 
@@ -244,10 +246,17 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, curre
             value6 = ''
             value6 = "'" + value6 + "'"
 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
+
     if current_email:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email) + ' --liftover' + value6
-    else:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 + ' --liftover' + value6
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
+
+    if current_email:
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
     print(string)
     if value4 != "''":
         string = string + ' -w' + ' ' + value4 
@@ -363,14 +372,12 @@ def return_num_results(value1, value2, value3, value4, value5, value6, value7, c
             value6 = ''
             value6 = "'" + value6 + "'"
 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
+
     if current_email:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email) + ' --liftover' + value6
-    else:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 + ' --liftover' + value6
-    if value4 != "''":
-        string = string + ' -w' + ' ' + value4 
-    if value5 != "''":
-        string = string + ' -a' + ' ' + value5
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -482,14 +489,12 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
             value6 = ''
             value6 = "'" + value6 + "'"
 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
+
     if current_email:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email) + ' --liftover' + value6
-    else:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 + ' --liftover' + value6
-    if value4 != "''":
-        string = string + ' -w' + ' ' + value4 
-    if value5 != "''":
-        string = string + ' -a' + ' ' + value5
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -615,14 +620,12 @@ def return_num_datasets(value1, value2, value3, value4, value5, value6, value7, 
             value6 = ''
             value6 = "'" + value6 + "'"
 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
+
     if current_email:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email) + ' --liftover' + value6
-    else:
-        string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 + ' --liftover' + value6
-    if value4 != "''":
-        string = string + ' -w' + ' ' + value4 
-    if value5 != "''":
-        string = string + ' -a' + ' ' + value5
+        string = string +  ' --email' + ' ' + str(current_email)
+    if value6 == "'LIFTOVER'":
+        string = string + ' --liftover'
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
