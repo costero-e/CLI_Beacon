@@ -91,7 +91,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
             value8 = "'" + value8 + "'"
 
         
-    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 
+    string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email)
     if value4:
         string = string + ' -w' + ' ' + value4 
     if value5:
