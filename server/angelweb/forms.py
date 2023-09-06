@@ -6,7 +6,7 @@ class BamForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.initial['region'] = 1
         
-        obj = BamForm.objects.first()
+
         field_value = getattr(obj, 'region')
         if field_value > 0:
             self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
