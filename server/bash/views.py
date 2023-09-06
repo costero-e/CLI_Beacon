@@ -8,7 +8,7 @@ import logging
 
 LOG = logging.getLogger(__name__)
 
-def return_string(value1, value2, value3, value4, value5, value6, value7, current_email):
+def return_string(value1, value2, value3, value4, value5, value6, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -64,17 +64,6 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     else:
         value5 = str(value5)
         value5 = "'" + value5 + "'"
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-            value7 = "'" + value7 + "'"
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-        value7 = "'" + value7 + "'"
-    else:
-        value7 = str(value7)
-        value7 = "'" + value7 + "'"
     for value in value6:
         if value == 'True':
             value6 = 'LIFTOVER'
@@ -98,7 +87,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
 
     return string
 
-def return_list(value1, value2, value3, value4, value5, value6, value7):
+def return_list(value1, value2, value3, value4, value5, value6):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -140,14 +129,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
         value5 = value
     else:
         value5 = str(value5)
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-    else:
-        value7 = str(value7)
+
 
     for value in value6:
         if value == 'True':
@@ -163,14 +145,13 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     string_list.append(value3)
     string_list.append(value4)
     string_list.append(value5)
-    string_list.append(value7)
     string_list.append(value6)
 
 
 
     return string_list
 
-def return_boolean(value1, value2, value3, value4, value5, value6, value7, current_email):
+def return_boolean(value1, value2, value3, value4, value5, value6, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -226,17 +207,6 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, curre
     else:
         value5 = str(value5)
         value5 = "'" + value5 + "'"
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-            value7 = "'" + value7 + "'"
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-        value7 = "'" + value7 + "'"
-    else:
-        value7 = str(value7)
-        value7 = "'" + value7 + "'"
 
     for value in value6:
         if value == 'True':
@@ -292,7 +262,7 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, curre
 
     return boolean
 
-def return_num_results(value1, value2, value3, value4, value5, value6, value7, current_email):
+def return_num_results(value1, value2, value3, value4, value5, value6, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -348,17 +318,6 @@ def return_num_results(value1, value2, value3, value4, value5, value6, value7, c
     else:
         value5 = str(value5)
         value5 = "'" + value5 + "'"
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-            value7 = "'" + value7 + "'"
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-        value7 = "'" + value7 + "'"
-    else:
-        value7 = str(value7)
-        value7 = "'" + value7 + "'"
 
     for value in value6:
         if value == 'True':
@@ -415,7 +374,7 @@ def return_num_results(value1, value2, value3, value4, value5, value6, value7, c
 
     return num_results
 
-def return_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
+def return_datasets(value1, value2, value3, value4, value5, value6, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -471,17 +430,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
     else:
         value5 = str(value5)
         value5 = "'" + value5 + "'"
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-            value7 = "'" + value7 + "'"
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-        value7 = "'" + value7 + "'"
-    else:
-        value7 = str(value7)
-        value7 = "'" + value7 + "'"
 
     for value in value6:
         if value == 'True':
@@ -551,7 +499,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
     return dataset_dict
 
-def return_num_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
+def return_num_datasets(value1, value2, value3, value4, value5, value6, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -607,17 +555,6 @@ def return_num_datasets(value1, value2, value3, value4, value5, value6, value7, 
     else:
         value5 = str(value5)
         value5 = "'" + value5 + "'"
-    if isinstance(value7, list):
-        for value in value7:
-            value7 = str(value)
-            value7 = "'" + value7 + "'"
-    elif isinstance(value7, int):
-        value = str(value)
-        value7 = value
-        value7 = "'" + value7 + "'"
-    else:
-        value7 = str(value7)
-        value7 = "'" + value7 + "'"
 
     for value in value6:
         if value == 'True':
