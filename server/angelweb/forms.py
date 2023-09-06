@@ -2,13 +2,20 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class BamForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        region = self.fields.get('region')
+        if region and region.widget.attrs['value'] != 0:
+            self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
+            '''
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
         region = cleaned_data.get("region")
 
         if region > 0:
             self.fields['mutated_allele'].widget.attrs.update({'disabled': 'disabled'})
-            '''
+            
             raise ValidationError(
                 "fill in the field classs"
             )
