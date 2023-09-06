@@ -2,7 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class BamForm(forms.Form):
-    def clean(self):
+    def __init__(self, *args, **kwargs):
+        super(BamForm, self).__init__(*args, **kwargs)
         cleaned_data = super().clean()
         region = cleaned_data.get("region")
 
