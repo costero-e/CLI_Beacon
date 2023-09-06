@@ -2,14 +2,21 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class BamForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.initial['region'] = 1
-        
+    def clean(self):
+        region = self.cleaned_data.get('region')
 
-        field_value = getattr(obj, 'region')
-        if field_value > 0:
-            self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
+        if region > 0:
+            # Here we're raising a ValidationError that refers to a specific
+            # field so the error is better pointed out to the user.
+            raise ValidationError({
+                'available_till': ValidationError(
+                    'If you fill in available_from field, you also need to '
+                    'fill out available_till.', 
+                    code='required'
+                )
+            })
+
+        return self.cleaned_data
             
 
             
