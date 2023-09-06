@@ -92,6 +92,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
 
         
     string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email)
+    print(string)
     if value4:
         string = string + ' -w' + ' ' + value4 
     if value5:
@@ -263,6 +264,7 @@ def return_boolean(value1, value2, value3, value4, value5, value6, value7, value
             value8 = "'" + value8 + "'"
 
     string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1 +  ' --email' + ' ' + str(current_email)
+    print(string)
     if value4 != "''":
         string = string + ' -w' + ' ' + value4 
     if value5 != "''":
@@ -678,6 +680,8 @@ def bash_view(request):
                 return HttpResponseBadRequest('Bad Request')
             if listin[7] not in publics:
                 return HttpResponseBadRequest('Bad Request')
+            
+            print(current_email)
                 
 
             context = {
