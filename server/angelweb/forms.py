@@ -7,7 +7,7 @@ class BamForm(forms.Form):
         self.initial['region'] = 0
 
         region = self.fields.get('region')
-        if region and region.widget.attrs['region'] != 0:
+        if region != 0:
             self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
             '''
     def clean(self):
