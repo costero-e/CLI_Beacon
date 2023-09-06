@@ -5,22 +5,18 @@ class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initial['region'] = 1
-        s = self.cleaned_data['region']
-        region = self.fields.get('region')
-        if s != 0:
-            self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
-            '''
+            
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
         region = cleaned_data.get("region")
 
         if region > 0:
-            self.fields['mutated_allele'].widget.attrs.update({'disabled': 'disabled'})
+            self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
             
             raise ValidationError(
                 "fill in the field classs"
             )
-            '''
+            
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
     answer_choices = [("BOOL", "BOOL"), ("COUNT", "COUNT")]
@@ -32,7 +28,7 @@ class BamForm(forms.Form):
     answer_type = forms.ChoiceField(choices=answer_choices, help_text="<span class='hovertext' data-hover='BOOL for a yes/no, COUNT for number of results'>Answer type</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
-    
+    clean()
 
 class BamFormTrue(forms.Form):
     def __init__(self, *args, **kwargs):
