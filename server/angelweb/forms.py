@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 class BamForm(forms.Form):
     def clean(self):
-        cleaned_data = super().clean()
+        cleaned_data = super(BamForm, self).clean()
         region = cleaned_data.get("region")
 
         if region > 0:
