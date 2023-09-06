@@ -15,8 +15,9 @@ class BamForm(forms.Form):
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
     def clean(self):
         region = self.cleaned_data.get('region')
+        mutated_allele = self.cleaned_data.get('region')
 
-        if region > 0:
+        if region and mutated_allele:
             # Here we're raising a ValidationError that refers to a specific
             # field so the error is better pointed out to the user.
             raise ValidationError({
