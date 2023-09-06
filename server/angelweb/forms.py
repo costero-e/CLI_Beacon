@@ -13,20 +13,6 @@ class BamForm(forms.Form):
     answer_type = forms.ChoiceField(choices=answer_choices, help_text="<span class='hovertext' data-hover='BOOL for a yes/no, COUNT for number of results'>Answer type</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
-    def clean(self):
-        region = self.cleaned_data.get('region')
-        mutated_allele = self.cleaned_data.get('region')
-
-        if region and mutated_allele:
-            # Here we're raising a ValidationError that refers to a specific
-            # field so the error is better pointed out to the user.
-            raise ValidationError({
-                'region': ValidationError(
-                    'If you fill in available_from field, you also need to '
-                    'fill out available_till.', 
-                    code='required'
-                )
-            })
 
 
             
