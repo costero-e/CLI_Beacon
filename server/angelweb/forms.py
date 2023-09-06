@@ -4,7 +4,7 @@ class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
         region = self.fields.get('custom_value')
-        if region and region.widget.attrs['value'] > 0:
+        if region:
             self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
