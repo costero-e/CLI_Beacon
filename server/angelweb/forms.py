@@ -5,17 +5,13 @@ class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initial['region'] = 1
-            
-    def clean(self):
-        cleaned_data = super(BamForm, self).clean()
-        region = cleaned_data.get("region")
-
-        if region > 0:
+        
+        obj = BamForm.objects.first()
+        field_value = getattr(obj, 'region')
+        if field_value > 0:
             self.fields['mutated_allele'].widget.attrs['disabled'] = 'true'
             
-            raise ValidationError(
-                "fill in the field classs"
-            )
+
             
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
