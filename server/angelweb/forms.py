@@ -3,7 +3,8 @@ from django import forms
 class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
-        if self.fields['region'].widget.attrs['value'] == '0':
+        instance = getattr(self, 'instance', None)
+        if instance.region == '0':
             self.fields['mutated_allele'].widget.attrs['readonly'] = True
         
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
