@@ -338,7 +338,7 @@ def bash_view(request):
 
             return HttpResponseRedirect('/' + get_string)
         else:
-           raise TypeError("Sorry, only strings are allowed")
+           raise TypeError("can't fill mutated allele if region is specified")
         
     if request.method == 'GET':
         check = 0
