@@ -337,6 +337,8 @@ def bash_view(request):
 
 
             return HttpResponseRedirect('/' + get_string)
+        else:
+           print (form.errors)
         
     if request.method == 'GET':
         check = 0
