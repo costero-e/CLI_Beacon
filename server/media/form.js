@@ -8,6 +8,6 @@ if (document.getElementById('id_region').value != ''){
   } else { 
     document.getElementById('id_mutated_allele').readOnly=false;
 }
-} else if (element == null) {
+} else {
     document.getElementById('id_mutated_allele').readOnly=true;
 }
