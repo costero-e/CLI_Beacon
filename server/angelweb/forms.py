@@ -11,13 +11,6 @@ class BamForm(forms.Form):
     mutated_allele = forms.CharField(max_length=50, required=False, help_text="<span class='hovertext' data-hover='Search for a specific variation that query will look for'>Mutated Allele</span>", label="")
     answer_type = forms.ChoiceField(choices=answer_choices, help_text="<span class='hovertext' data-hover='BOOL for a yes/no, COUNT for number of results'>Answer type</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
-
-    def clean(self):
-        cleaned_data = super().clean()
-        region_type = cleaned_data.get('region')
-
-        if region_type:
-            self.fields['mutated_allele'].widget.attrs['disabled'] = True
     
 
 class BamFormTrue(forms.Form):
