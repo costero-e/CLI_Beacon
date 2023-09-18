@@ -327,6 +327,8 @@ def bash_view(request):
         LOG.debug('getting')
         check = 0
         params = dict(request.GET)
+        print(params)
+        LOG.debug(params)
         for k,v in params.items():
             if k == 'reference':
                 check += 1
