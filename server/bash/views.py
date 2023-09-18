@@ -323,6 +323,8 @@ def bash_view(request):
            raise TypeError("can't fill mutated allele if region is specified")
         
     if request.method == 'GET':
+        print('getting')
+        LOG.debug('getting')
         check = 0
         params = dict(request.GET)
         for k,v in params.items():
