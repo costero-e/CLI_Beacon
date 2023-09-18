@@ -336,7 +336,7 @@ def bash_view(request):
                 check += 1
             if k == 'start':
                 check += 1
-        if check > 3:
+        if check > 2:
             try:
                 if params['region']:
                     pass
@@ -465,7 +465,7 @@ def bash_true_view(request):
                 check += 1
             if k == 'start':
                 check += 1
-        if check > 3:
+        if check > 2:
             try:
                 if params['region']:
                     pass
@@ -590,7 +590,7 @@ def bash_false_view(request):
                 check += 1
             if k == 'start':
                 check += 1
-        if check > 3:
+        if check > 2:
             try:
                 if params['region']:
                     pass
