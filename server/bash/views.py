@@ -231,6 +231,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, current_emai
     try:
         bash = subprocess.check_output([bash_string], shell=True)
         print(bash)
+        LOG.debug(bash)
     except subprocess.CalledProcessError as e:
         output = e.output
         print(output)
