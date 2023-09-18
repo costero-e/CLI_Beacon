@@ -171,6 +171,20 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     return string_list
 
 def return_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
+    print(value1)
+    LOG.debug(value1)
+    print(value2)
+    LOG.debug(value2)
+    print(value3)
+    LOG.debug(value3)
+    print(value4)
+    LOG.debug(value4)
+    print(value5)
+    LOG.debug(value5)
+    print(value6)
+    LOG.debug(value6)
+    print(value7)
+    LOG.debug(value7)
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -369,6 +383,8 @@ def bash_view(request):
                 params['mutated_allele']=""
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['answer_type'])
+            print(listin)
+            LOG.debug(listin)
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             answer_types=['BOOL','COUNT']
