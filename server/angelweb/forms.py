@@ -11,7 +11,11 @@ class BamForm(forms.Form):
         region = cleaned_data.get('region', None)
         mutated_allele = cleaned_data.get('mutated_allele', None)
         if mutated_allele and region!=0:
-            raise forms.ValidationError("can't fill mutated allele if region is specified")
+            self.add_error("mutated_allele", "not working")
+            self.add_error("start", "not working")
+            self.add_error("region", "not working")
+
+
     
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
