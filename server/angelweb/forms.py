@@ -3,8 +3,10 @@ from django import forms
 class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
+        cleaned_data = super(BamForm, self).clean()
         # assign a (computed, I assume) default value to the choice field
         self.initial['public'] = True 
+        self.initial['start'] = cleaned_data.get('start', None)
 
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
