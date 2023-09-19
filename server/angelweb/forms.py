@@ -1,5 +1,5 @@
 from django import forms
-from models import BamModel
+from .models import BamModel
 
 class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
