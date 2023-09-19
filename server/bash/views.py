@@ -334,6 +334,25 @@ def bash_view(request):
         LOG.debug(current_email)
     else:
         current_email = ''
+    dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
+    boolean = dict_complete["boolean"]
+    del dict_complete["boolean"]
+    num_results = dict_complete["num_results"]
+    del dict_complete["num_results"]
+    num_datasets = dict_complete["num_datasets"]
+    del dict_complete["num_datasets"]
+
+
+    context = {
+                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
+                    'boolean': boolean,
+                    'num_results': num_results,
+                    'datasets': dict_complete,
+                    'num_datasets': num_datasets,
+                    'form': form
+
+
+                }
     if request.method == 'POST':
         form = BamForm(request.POST)
         
@@ -350,6 +369,8 @@ def bash_view(request):
             return HttpResponseRedirect('/' + get_string)
         else:
            raise TypeError("can't fill mutated allele if region is specified")
+        
+    
         
     if request.method == 'GET':
         print('getting')
@@ -431,25 +452,7 @@ def bash_view(request):
             print(current_email)
                 
 
-            dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
-            boolean = dict_complete["boolean"]
-            del dict_complete["boolean"]
-            num_results = dict_complete["num_results"]
-            del dict_complete["num_results"]
-            num_datasets = dict_complete["num_datasets"]
-            del dict_complete["num_datasets"]
 
-
-            context = {
-                    'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
-                    'boolean': boolean,
-                    'num_results': num_results,
-                    'datasets': dict_complete,
-                    'num_datasets': num_datasets,
-                    'form': form
-
-
-                }
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -457,7 +460,7 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email) + ' GET' + '\n')
             file.close()
-
+            context.update({'form':form})
             return render(request, 'base.html', context)
             
     
