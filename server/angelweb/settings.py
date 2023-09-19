@@ -29,8 +29,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['beacon-demo.ega-archive.org', 'localhost']
-CSRF_TRUSTED_ORIGINS = ['https://beacon-demo.ega-archive.org']
+ALLOWED_HOSTS = ['beacon-test.ega-archive.org', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://beacon-test.ega-archive.org']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
@@ -154,8 +154,8 @@ OIDC_OP_LOGOUT_ENDPOINT = "https://beacon-network-demo2.ega-archive.org/auth/rea
 
 #LOGIN_REDIRECT_URL = "http://localhost:8003"
 #LOGOUT_REDIRECT_URL = "http://localhost:8003"
-LOGIN_REDIRECT_URL = "https://beacon-demo.ega-archive.org"
-LOGOUT_REDIRECT_URL = "https://beacon-demo.ega-archive.org"
+LOGIN_REDIRECT_URL = "https://beacon-test.ega-archive.org"
+LOGOUT_REDIRECT_URL = "https://beacon-test.ega-archive.org"
 
 	
 OIDC_RP_SIGN_ALGO = 'RS256'
