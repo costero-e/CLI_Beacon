@@ -13,14 +13,8 @@ class BamForm(forms.ModelForm):
         mutated_allele = cleaned_data.get('mutated_allele', None)
         if mutated_allele and region!=0:
             raise forms.ValidationError("can't fill mutated allele if region is specified")
-        start=cleaned_data.get('start', None)
+        self.initial['start']=cleaned_data.get('start', None)
 
-    def get_initial(self):
-        initial = super().get_initial()
-
-        initial['start'] = self.request.start
-
-        return initial
 
 
 
