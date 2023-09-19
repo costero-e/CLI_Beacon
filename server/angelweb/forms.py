@@ -1,4 +1,5 @@
 from django import forms
+from .models import BamModel
 
 class BamForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -15,6 +16,7 @@ class BamForm(forms.ModelForm):
         start=cleaned_data.get('start', None)
 
 
+
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
     reference = forms.ChoiceField(choices=choices_References, help_text="<span class='hovertext' data-hover='Name of the genome to be queried'>Reference</span>", label="")
@@ -24,6 +26,10 @@ class BamForm(forms.ModelForm):
     mutated_allele = forms.CharField(max_length=50, required=False, help_text="<span class='hovertext' data-hover='Search for a specific variation that query will look for'>Mutated Allele</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
+
+    class Meta:
+        model = BamModel
+        fields = ['reference', 'chromosome', 'start', 'region', 'mutated_allele', 'liftover', 'public']
 
 class BamFormTrue(forms.Form):
     def __init__(self, *args, **kwargs):
