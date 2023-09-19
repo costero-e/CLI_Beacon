@@ -11,8 +11,8 @@ class BamForm(forms.Form):
         region = cleaned_data.get('region', None)
         mutated_allele = cleaned_data.get('mutated_allele', None)
         if mutated_allele and region!=0:
-            msg = u"Your file must be a PDF or DOC file type."
-            self._errors["resume"] = self.error_class([msg])  
+            msg = "Your file must be a PDF or DOC file type."
+            self.add_error('mutated_allele', msg)
     
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
