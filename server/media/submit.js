@@ -1,7 +1,3 @@
 var btn = document.getElementById('id_start');
-if (btn) {btn.addEventListener('click', func);}
+if (btn) {console.log(btn.value)}
 
-
-function func() {
-  console.log(btn.value)
-}
