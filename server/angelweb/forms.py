@@ -1,6 +1,6 @@
 from django import forms
 
-class BamForm(forms.Form):
+class BamForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
         # assign a (computed, I assume) default value to the choice field
