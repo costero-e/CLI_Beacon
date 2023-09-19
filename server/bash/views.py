@@ -347,7 +347,6 @@ def bash_view(request):
             else:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
-            form = BamForm(request.POST)
             return HttpResponseRedirect('/' + get_string)
         else:
            raise TypeError("can't fill mutated allele if region is specified")
@@ -486,7 +485,6 @@ def bash_true_view(request):
             else:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
-            form = BamFormTrue(request.POST)
 
             return HttpResponseRedirect('/' + get_string)
         
@@ -617,7 +615,7 @@ def bash_false_view(request):
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            form = BamFormFalse(request.POST)
+
 
             return HttpResponseRedirect('/' + get_string)
         
