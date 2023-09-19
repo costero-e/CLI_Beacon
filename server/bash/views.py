@@ -457,7 +457,7 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email) + ' GET' + '\n')
             file.close()
-
+            context.update({'form': form})
             return render(request, 'base.html', context)
             
     
