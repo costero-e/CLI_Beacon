@@ -15,6 +15,13 @@ class BamForm(forms.ModelForm):
             raise forms.ValidationError("can't fill mutated allele if region is specified")
         start=cleaned_data.get('start', None)
 
+    def get_initial(self):
+        initial = super().get_initial()
+
+        initial['start'] = self.request.start
+
+        return initial
+
 
 
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
