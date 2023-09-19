@@ -152,10 +152,10 @@ OIDC_STORE_ID_TOKEN = True
 OIDC_OP_LOGOUT_URL_METHOD = 'my_auth.provider_logout'
 OIDC_OP_LOGOUT_ENDPOINT = "https://beacon-network-demo2.ega-archive.org/auth/realms/Beacon/protocol/openid-connect/logout"
 
-LOGIN_REDIRECT_URL = "http://localhost:8003"
-LOGOUT_REDIRECT_URL = "http://localhost:8003"
-#LOGIN_REDIRECT_URL = "https://beacon-test.ega-archive.org"
-#LOGOUT_REDIRECT_URL = "https://beacon-test.ega-archive.org"
+#LOGIN_REDIRECT_URL = "http://localhost:8003"
+#LOGOUT_REDIRECT_URL = "http://localhost:8003"
+LOGIN_REDIRECT_URL = "https://beacon-demo.ega-archive.org"
+LOGOUT_REDIRECT_URL = "https://beacon-demo.ega-archive.org"
 
 	
 OIDC_RP_SIGN_ALGO = 'RS256'
