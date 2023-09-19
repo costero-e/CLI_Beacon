@@ -1,7 +1,7 @@
-var btn = document.getElementById('search');
+var btn = document.getElementById('id_start');
 if (btn) {btn.addEventListener('click', func);}
 
 
 function func() {
-  console.log(document.getElementById("id_start").value)
+  console.log(btn.value)
 }
