@@ -348,8 +348,7 @@ def bash_view(request):
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
             return HttpResponseRedirect('/' + get_string)
-        else:
-           raise form.add_error(None, "can't fill mutated allele if region is specified")
+
         
     if request.method == 'GET':
         print('getting')
