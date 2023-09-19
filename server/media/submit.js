@@ -1,13 +1,7 @@
 var nameField = document.getElementById('id_region');
-var lastNameValue = undefined;
-
-updateNameDisplay();
-
-setInterval(updateNameDisplay, 100);
-
+nameField.onkeydown = updateNameDisplay;
+nameField.onkeyup = updateNameDisplay;
+nameField.onkeypress = updateNameDisplay;
 function updateNameDisplay() {
-  var thisValue = nameField.value || "??";
-  if (lastNameValue != thisValue) {
-    document.getElementById('start').innerHTML = lastNameValue = thisValue;
-  }
+    document.getElementById('id_region').innerHTML = this.value || "??";
 }
