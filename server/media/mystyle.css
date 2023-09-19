@@ -256,3 +256,7 @@ table {
 .welcome{
   margin-top: 15px;
 }
+
+li {
+  margin-left: 20px;
+}

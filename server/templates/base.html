@@ -94,7 +94,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                     </tr>
                     {% for key,value in datasets.items %}
                     <tr>
-                      <td><a href="https://ega-archive.org/datasets/{{key}}">{{key}}</a></td>
+                      <td><a href="https://ega-archive.org/datasets/{{key}}" target="_blank">{{key}}</a></td>
                       <td>{{value}}</td>
                     </tr>
 
@@ -144,14 +144,32 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
 
         
 
-
+        <div class="row" style="margin-top: 20px">
+          <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px;"> List of Datasets</button>
+            <ul class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">
+              <li>ESP-NHLBI_Exome_Sequencing_Project</li>
+              <li>simons-genome-diversity-project</li>
+              <li>platinum genomes</li>
+              <li>brain genomics</li>
+              <li>encode-open</li>
+              <li>tcga-open</li>
+              <li>hapmap</li>
+              <li>gnomad</li>
+              <li>1000g</li>
+              <li>exac</li>
+              <li>giab</li>
+              <li>alfa</li>
+              <li>dbVar</li>
+              <li>clinvar</li>
+              <li>dbSNP</li>
+            </ul>  
+          </div>
 
 
           <div class="row">
             <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px"> Info</button><p class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">The EGA Beacon CLI allows you to find any specific genomic variant in a region of a chromosome. To get some results, it is compulsory to fill in
               the form with the reference of the genome, the number of the chromosome you want to query at and a start position inside the region where you want to find the genomic
-              variation. Optionally, you can also add some specific mutation allele you want to find and if the data has any liftover or public condition. To specify how you want to
-              get the result, you have to select BOOL (for Yes or No answer) or COUNT (for the number of genomic variations found for your query).
+              variation. Optionally, you can also add some specific mutation allele you want to find and if the data has any liftover or public condition. 
             </p>
             </div>
             

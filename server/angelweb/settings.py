@@ -29,8 +29,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['beacon-test.ega-archive.org', 'localhost']
-CSRF_TRUSTED_ORIGINS = ['https://beacon-test.ega-archive.org']
+ALLOWED_HOSTS = ['beacon-demo.ega-archive.org', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://beacon-demo.ega-archive.org']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
