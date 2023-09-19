@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import subprocess
-from angelweb.forms import BamForm, BamFormTrue, BamFormFalse, BamModelForm
+from angelweb.forms import BamForm, BamFormTrue, BamFormFalse
 import time
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 import logging
@@ -326,7 +326,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
 def bash_view(request):
     template = "home.html"
-    form =BamModelForm()
+    form =BamForm()
     context = {'form': form}
     if request.user.is_authenticated:
         current_email=request.user.email
@@ -335,7 +335,7 @@ def bash_view(request):
     else:
         current_email = ''
     if request.method == 'POST':
-        form = BamModelForm(request.POST)
+        form = BamForm(request.POST)
         
         if form.is_valid():
             if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
