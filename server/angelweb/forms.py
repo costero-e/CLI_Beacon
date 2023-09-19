@@ -22,11 +22,6 @@ class BamForm(forms.Form):
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
 
-class BamModelForm(BamModel):
-    class Meta:
-        model = BamForm
-        fields = ["reference", "chromosome", "start", "region", "mutated_allele", "liftover", "public"]
-
 class BamFormTrue(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamFormTrue, self).__init__(*args, **kwargs)
