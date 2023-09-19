@@ -58,7 +58,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                     {% csrf_token %}
                     <div class="row"><div>
                     {% for f in form %}
-                    {% form.non_field_errors %}
+                    {{ f.non_field_errors }}
                     {{ f.errors }}
                     <p>{{f.help_text|safe}} {{f}} </p>   
                     {% endfor %}
