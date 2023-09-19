@@ -5,7 +5,7 @@ class BamForm(forms.Form):
         super(BamForm, self).__init__(*args, **kwargs)
         # assign a (computed, I assume) default value to the choice field
         self.initial['public'] = True 
-        self.initial['start'] = self.clean(self) 
+        self.initial['start'] = self.clean() 
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
         region = cleaned_data.get('region', None)
