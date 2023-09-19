@@ -1,6 +1,6 @@
 from django import forms
 
-class BamForm(forms.ModelForm):
+class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
         # assign a (computed, I assume) default value to the choice field
@@ -20,7 +20,11 @@ class BamForm(forms.ModelForm):
     mutated_allele = forms.CharField(max_length=50, required=False, help_text="<span class='hovertext' data-hover='Search for a specific variation that query will look for'>Mutated Allele</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
-    
+
+class BamModelForm(forms.ModelForm):
+    class Meta:
+        model = BamForm
+        fields = ["reference", "chromosome", "start", "region", "mutated_allele", "liftover", "public"]
 
 class BamFormTrue(forms.Form):
     def __init__(self, *args, **kwargs):
