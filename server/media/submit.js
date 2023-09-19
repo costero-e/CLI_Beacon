@@ -1,7 +1,7 @@
-var nameField = document.getElementById('id_region');
-nameField.onkeydown = updateNameDisplay;
-nameField.onkeyup = updateNameDisplay;
-nameField.onkeypress = updateNameDisplay;
-function updateNameDisplay() {
-    document.getElementById('id_region').innerHTML = this.value || "??";
-}
+let secondInput = $('#id_mutated_allele'); // Cache the jQuery element
+$("#id_region").on(
+    "input propertychange",
+    event => secondInput.prop(
+        'disabled',
+        event.currentTarget.value !== "")
+);
