@@ -326,7 +326,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
 def bash_view(request):
     template = "home.html"
-    form =BamM()
+    form =BamForm()
     context = {'form': form}
     if request.user.is_authenticated:
         current_email=request.user.email
