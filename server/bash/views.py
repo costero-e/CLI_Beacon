@@ -349,7 +349,7 @@ def bash_view(request):
 
             return HttpResponseRedirect('/' + get_string)
         else:
-           raise form.add_error('mutated_allele', "can't fill mutated allele if region is specified")
+           raise form.add_error(None, "can't fill mutated allele if region is specified")
         
     if request.method == 'GET':
         print('getting')
