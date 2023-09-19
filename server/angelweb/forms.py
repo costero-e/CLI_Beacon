@@ -6,7 +6,7 @@ class BamForm(forms.ModelForm):
         super(BamForm, self).__init__(*args, **kwargs)
         # assign a (computed, I assume) default value to the choice field
         self.initial['public'] = True
-        self.initial['start'] = 121131  
+        self.initial['start'] = self.return_start() 
 
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
@@ -15,6 +15,11 @@ class BamForm(forms.ModelForm):
         if mutated_allele and region!=0:
             raise forms.ValidationError("can't fill mutated allele if region is specified")
         self.initial['start']=cleaned_data.get('start', None)
+    
+    def return_start(self):
+        cleaned_data = super(BamForm, self).clean()
+        start = cleaned_data.get('start', None)
+        return start
 
 
 
