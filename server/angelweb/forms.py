@@ -4,16 +4,14 @@ class BamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BamForm, self).__init__(*args, **kwargs)
         # assign a (computed, I assume) default value to the choice field
-        self.initial['public'] = True
-
+        self.initial['public'] = True  
     def clean(self):
         cleaned_data = super(BamForm, self).clean()
         region = cleaned_data.get('region', None)
         mutated_allele = cleaned_data.get('mutated_allele', None)
         if mutated_allele and region!=0:
             raise forms.ValidationError("can't fill mutated allele if region is specified")
-        start=cleaned_data.get('start', None)
-        return start
+        self.fields['start'] = cleaned_data.get('start', None)
 
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
