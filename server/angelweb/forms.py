@@ -11,10 +11,8 @@ class BamForm(forms.Form):
         mutated_allele = cleaned_data.get('mutated_allele', None)
         if mutated_allele and region!=0:
             raise forms.ValidationError("can't fill mutated allele if region is specified")
-        dictio = {}
-        dictio['start'] = cleaned_data.get('start', None)
-        return dictio
-    dictio=clean()
+        self.fields['start'] = cleaned_data.get('start', None)
+
     choices_References = [(str(x), "GRCh" + str(x)) for x in range(37, 39)]
     choices = [(str(x), x) for x in range(1, 23)] + [("X", "X"), ("Y", "Y"), ("MT", "MT")]
     reference = forms.ChoiceField(choices=choices_References, help_text="<span class='hovertext' data-hover='Name of the genome to be queried'>Reference</span>", label="")
