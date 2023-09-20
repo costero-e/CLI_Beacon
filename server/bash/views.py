@@ -91,6 +91,9 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         string = string + ' --public'
 
     print(string)
+    print("value4 is".format(value4))
+    print("value5 is".format(value5))
+
     if value4 is not '':
         string = string + ' --range' + ' ' + value4 
     if value5 is not "''":
