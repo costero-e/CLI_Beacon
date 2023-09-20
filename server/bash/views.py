@@ -9,7 +9,6 @@ import logging
 LOG = logging.getLogger(__name__)
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, current_email):
-    print("value5 is {}".format(value5))
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -85,9 +84,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     if value7 == "'PUBLIC'":
         string = string + ' --public'
 
-    print(string)
-    print("value4 is".format(value4))
-    print("value5 is".format(value5))
+
 
     if value4 is not None:
         string = string + ' --range' + ' ' + value4 
@@ -97,7 +94,6 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     return string
 
 def return_list(value1, value2, value3, value4, value5, value6, value7):
-    print("value5 is {}".format(value5))
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -167,19 +163,6 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     return string_list
 
 def return_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
-    print("value5 is {}".format(value5))
-    print(value1)
-    LOG.debug(value1)
-    print(value2)
-    LOG.debug(value2)
-    print(value3)
-    LOG.debug(value3)
-    print(value4)
-    LOG.debug(value4)
-    print(value5)
-    LOG.debug(value5)
-    print(value6)
-    LOG.debug(value6)
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -262,17 +245,13 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
-    print(bash_string)
 
     try:
         bash = subprocess.check_output([bash_string], shell=True)
     except subprocess.CalledProcessError as e:
         output = e.output
-        print(output)
 
     bash_list = bash.split(b'\n')
-    print(bash_list)
-    LOG.debug(bash_list)
 
     new_bash_list=[]
     for item in bash_list:
@@ -284,16 +263,13 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         item = item.replace(')', '')
         item = item.replace("'", '')
         item = item.replace('"', '')
-        print("item is: {}".format(item))
         item_list = item.split(',')
         item_list_2 = []
         for item in item_list:
             item = item.lstrip() 
             item_list_2.append(item)
         item_list = item_list_2
-        print("item_list is: {}".format(item_list))
         boolean = item_list[0]
-        print("boolean: {}". format(boolean))
         num_results = item_list[1]
         end = len(item_list)
         datasets_list = item_list[2:end]
@@ -309,7 +285,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
             last_element=''
         else:
             last_element=element
-    print("datasets_dict: {}". format(dataset_dict))
 
     dataset_dict["num_datasets"] = num_datasets
     dataset_dict["num_results"] = num_results
@@ -328,8 +303,6 @@ def bash_view(request):
     context = {'form': form}
     if request.user.is_authenticated:
         current_email=request.user.email
-        print(current_email)
-        LOG.debug(current_email)
     else:
         current_email = ''
     if request.method == 'POST':
@@ -374,8 +347,6 @@ def bash_view(request):
                 params['mutated_allele']=""
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'])
-            print(listin)
-            LOG.debug(listin)
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             liftovers=["'LIFTOVER'", "''"]
@@ -461,8 +432,6 @@ def bash_true_view(request):
     context = {'form': form}
     if request.user.is_authenticated:
         current_email=request.user.email
-        print(current_email)
-        LOG.debug(current_email)
     else:
         current_email = ''
     if request.method == 'POST':
@@ -507,8 +476,6 @@ def bash_true_view(request):
                 params['mutated_allele']=""
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'])
-            print(listin)
-            LOG.debug(listin)
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             liftovers=["'LIFTOVER'", "''"]
@@ -591,8 +558,6 @@ def bash_false_view(request):
     context = {'form': form}
     if request.user.is_authenticated:
         current_email=request.user.email
-        print(current_email)
-        LOG.debug(current_email)
     else:
         current_email = ''
     if request.method == 'POST':
@@ -637,8 +602,6 @@ def bash_false_view(request):
                 params['mutated_allele']=""
 
             listin = return_list(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'])
-            print(listin)
-            LOG.debug(listin)
             references=['37','38']
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             liftovers=["'LIFTOVER'", "''"]
