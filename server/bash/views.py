@@ -275,6 +275,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
+    print(bash_string)
 
     try:
         bash = subprocess.check_output([bash_string], shell=True)
