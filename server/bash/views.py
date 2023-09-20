@@ -334,9 +334,7 @@ def bash_view(request):
         current_email = ''
     if request.method == 'POST':
         form = BamForm(request.POST)
-        
         if form.is_valid():
-            print("aloha{}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
                 get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
@@ -346,16 +344,12 @@ def bash_view(request):
             else:
                 get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
-            return HttpResponseRedirect('/' + get_string)
 
+            return HttpResponseRedirect('/' + get_string)
         
     if request.method == 'GET':
-        print('getting')
-        LOG.debug('getting')
         check = 0
         params = dict(request.GET)
-        print(params)
-        LOG.debug(params)
         for k,v in params.items():
             if k == 'reference':
                 check += 1
@@ -416,6 +410,7 @@ def bash_view(request):
                 except Exception:
                     return HttpResponseBadRequest('Bad Request')
             
+
             
 
 
@@ -425,12 +420,7 @@ def bash_view(request):
             
             if listin[6] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-            
-            print(current_email)
-
-
                 
-
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
             boolean = dict_complete["boolean"]
             del dict_complete["boolean"]
@@ -456,10 +446,10 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email) + ' GET' + '\n')
             file.close()
-            
+
             return render(request, 'base.html', context)
             
-        
+    
     return render(request, template, context)
 
 def bash_true_view(request):
