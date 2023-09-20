@@ -428,7 +428,7 @@ def bash_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            if num_results == 0:
+            if num_results == '0':
                 context = {
                         'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                         'boolean': boolean,
@@ -566,7 +566,7 @@ def bash_true_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            if num_results == 0:
+            if num_results == '0':
                 context = {
                         'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                         'boolean': boolean,
@@ -705,7 +705,7 @@ def bash_false_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            if num_results == 0:
+            if num_results == '0':
                 context = {
                         'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                         'boolean': boolean,
