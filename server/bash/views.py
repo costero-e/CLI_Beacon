@@ -94,9 +94,9 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     print("value4 is".format(value4))
     print("value5 is".format(value5))
 
-    if value4 is not '':
+    if value4:
         string = string + ' --range' + ' ' + value4 
-    if value5 is not "''":
+    if value5:
         string = string + ' --alt' + ' ' + value5
 
     return string
