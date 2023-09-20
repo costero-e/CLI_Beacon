@@ -1,5 +1,6 @@
 
 var storedValue = localStorage.getItem("id_region");
+console.log(storedValue)
 storedValue.replace('[','')
 storedValue.replace("'",'')
 let b = parseInt(storedValue);
