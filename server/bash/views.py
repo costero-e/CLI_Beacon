@@ -429,6 +429,8 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
+            
+
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
@@ -437,8 +439,9 @@ def bash_view(request):
                     'num_datasets': num_datasets,
                     'form': form
                 }
+            
 
-
+            context['form'] = BamForm(initial={'start': params['start']})
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr

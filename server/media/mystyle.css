@@ -260,3 +260,8 @@ table {
 li {
   margin-left: 20px;
 }
+
+#myDIlist{
+  display: none;
+}
+
