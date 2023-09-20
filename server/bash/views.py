@@ -91,9 +91,9 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         string = string + ' --public'
 
     print(string)
-    if value4 is not None:
+    if value4 is not '':
         string = string + ' --range' + ' ' + value4 
-    if value5 is not None:
+    if value5 is not "''":
         string = string + ' --alt' + ' ' + value5
 
     return string
