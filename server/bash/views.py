@@ -336,6 +336,7 @@ def bash_view(request):
         form = BamForm(request.POST)
         
         if form.is_valid():
+            print(form.cleaned_data['mutated_allele'])
             if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
                 get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
