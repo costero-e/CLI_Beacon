@@ -490,7 +490,7 @@ def bash_true_view(request):
             LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != '':
+            elif form.cleaned_data['mutated_allele'] != ' ':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
                 get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
