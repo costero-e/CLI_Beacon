@@ -303,7 +303,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
         break
     
-    num_datasets = len(datasets_list)
+    num_datasets = len(datasets_list)/2
     dataset_dict={}
     last_element=''
     for element in datasets_list:
