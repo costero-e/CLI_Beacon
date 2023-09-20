@@ -270,7 +270,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
     print(string)
     if value4 != "''":
-        string = string + '--range' + ' ' + value4 
+        string = string + ' --range' + ' ' + value4 
     if value5 != "''":
         string = string + ' --alt' + ' ' + value5
     
