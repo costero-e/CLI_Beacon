@@ -283,8 +283,11 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         item = item.replace('"', '')
         print("item is: {}".format(item))
         item_list = item.split(',')
+        item_list_2 = []
         for item in item_list:
             item = item.lstrip() 
+            item_list_2.append(item)
+        item_list = item_list_2
         print("item_list is: {}".format(item_list))
         boolean = item_list[0]
         print("boolean: {}". format(boolean))
