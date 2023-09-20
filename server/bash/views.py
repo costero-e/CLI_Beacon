@@ -50,9 +50,8 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         value = str(value4)
         value4 = value
         value4 = "'" + value4 + "'"
-    elif value4 == None:
+    else:
         value4 = ''
-        value4 = "'" + value4 + "'"
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
@@ -132,7 +131,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     elif isinstance(value4, int):
         value = str(value4)
         value4 = value
-    elif value4 == None:
+    else:
         value4 = ''
     if isinstance(value5, list):
         for value in value5:
@@ -268,7 +267,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
     if value7 == "'PUBLIC'":
         string = string + ' --public'
 
-    print(string)
     if value4 != '':
         string = string + ' --range' + ' ' + value4 
     if value5 != '':
