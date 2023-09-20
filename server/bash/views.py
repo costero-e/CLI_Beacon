@@ -94,9 +94,9 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     print("value4 is".format(value4))
     print("value5 is".format(value5))
 
-    if value4:
+    if value4 is not '':
         string = string + ' --range' + ' ' + value4 
-    if value5:
+    if value5 is not '':
         string = string + ' --alt' + ' ' + value5
 
     return string
@@ -269,9 +269,9 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         string = string + ' --public'
 
     print(string)
-    if value4 != "''":
+    if value4 != '':
         string = string + ' --range' + ' ' + value4 
-    if value5 != "''":
+    if value5 != '':
         string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
@@ -342,13 +342,11 @@ def bash_view(request):
         form = BamForm(request.POST)
         
         if form.is_valid():
-            print("region is {}".format(form.cleaned_data['region']))
-            LOG.debug("region is {}".format(form.cleaned_data['region']))
-            print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
-            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
-            if form.cleaned_data['region'] != None:
+            if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
+                get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != None:
+            elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
                 get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
@@ -484,10 +482,6 @@ def bash_true_view(request):
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
-            print("region is {}".format(form.cleaned_data['region']))
-            LOG.debug("region is {}".format(form.cleaned_data['region']))
-            print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
-            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
                 get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
@@ -617,13 +611,11 @@ def bash_false_view(request):
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
-            print("region is {}".format(form.cleaned_data['region']))
-            LOG.debug("region is {}".format(form.cleaned_data['region']))
-            print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
-            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
-            if form.cleaned_data['region'] != None:
+            if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
+                get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != None:
+            elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
                 get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
