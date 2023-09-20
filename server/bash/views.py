@@ -280,6 +280,8 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         print(output)
 
     bash_list = bash.split(b'\n')
+    print(bash_list)
+    LOG.debug(bash_list)
 
     new_bash_list=[]
     for item in bash_list:
@@ -288,7 +290,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         item = item.replace(']', '')
         item = item.replace('(', '')
         item = item.replace(')', '')
-        item = item.replace(' ', '')
         item = item.replace("'", '')
         item = item.replace('"', '')
         print("item is: {}".format(item))
@@ -302,7 +303,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
         break
     
-    num_datasets = len(datasets_list)
+    num_datasets = int(len(datasets_list)/2)
     dataset_dict={}
     last_element=''
     for element in datasets_list:
@@ -348,8 +349,7 @@ def bash_view(request):
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
             return HttpResponseRedirect('/' + get_string)
-        else:
-           raise TypeError("can't fill mutated allele if region is specified")
+
         
     if request.method == 'GET':
         print('getting')
@@ -429,6 +429,8 @@ def bash_view(request):
                 return HttpResponseBadRequest('Bad Request')
             
             print(current_email)
+
+
                 
 
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
@@ -438,6 +440,7 @@ def bash_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
+
 
 
             context = {
@@ -457,10 +460,10 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email) + ' GET' + '\n')
             file.close()
-
+            
             return render(request, 'base.html', context)
             
-    
+        
     return render(request, template, context)
 
 def bash_true_view(request):
@@ -578,8 +581,6 @@ def bash_true_view(request):
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
             
             timestr = time.strftime("%Y%m%d")
