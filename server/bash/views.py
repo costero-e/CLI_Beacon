@@ -484,6 +484,7 @@ def bash_true_view(request):
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
+            print("Hola")
             print("region is {}".format(form.cleaned_data['region']))
             LOG.debug("region is {}".format(form.cleaned_data['region']))
             print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
