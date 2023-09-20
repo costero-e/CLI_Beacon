@@ -56,9 +56,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, str):
-        pass
-    else:
+    elif value5 == '':
         value5 = None
     for value in value6:
         if value == 'True':
@@ -134,9 +132,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, str):
-        pass
-    else:
+    elif value5 == '':
         value5 = None
 
     for value in value6:
@@ -228,9 +224,7 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, str):
-        pass
-    else:
+    elif value5 == '':
         value5 = None
 
 
