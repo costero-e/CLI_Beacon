@@ -91,10 +91,10 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         string = string + ' --public'
 
     print(string)
-    if value4:
-        string = string + ' -w' + ' ' + value4 
-    if value5:
-        string = string + ' -a' + ' ' + value5
+    if value4 is not None:
+        string = string + ' --range' + ' ' + value4 
+    if value5 is not None:
+        string = string + ' --alt' + ' ' + value5
 
     return string
 
@@ -267,9 +267,9 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
     print(string)
     if value4 != "''":
-        string = string + ' -w' + ' ' + value4 
+        string = string + '--range' + ' ' + value4 
     if value5 != "''":
-        string = string + ' -a' + ' ' + value5
+        string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
 
@@ -339,14 +339,12 @@ def bash_view(request):
         form = BamForm(request.POST)
         
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != '':
+            if form.cleaned_data['region'] != None:
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['mutated_allele'] != None:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
             return HttpResponseRedirect('/' + get_string)
 
@@ -479,14 +477,12 @@ def bash_true_view(request):
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != '':
+            if form.cleaned_data['region'] != None:
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['mutated_allele'] != None:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
 
             return HttpResponseRedirect('/' + get_string)
@@ -608,14 +604,12 @@ def bash_false_view(request):
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
-            elif form.cleaned_data['mutated_allele'] != '':
+            if form.cleaned_data['region'] != None:
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            elif form.cleaned_data['mutated_allele'] != None:
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
 
             return HttpResponseRedirect('/' + get_string)
