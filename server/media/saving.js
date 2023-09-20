@@ -1,5 +1,5 @@
 function saving() {
-var input = document.getElementById("id_region");
+var input = document.getElementById("id_region").value;
 console.log(input)
 input.replace('[','')
 input.replace("'",'')
