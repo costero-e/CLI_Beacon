@@ -9,6 +9,7 @@ import logging
 LOG = logging.getLogger(__name__)
 
 def return_string(value1, value2, value3, value4, value5, value6, value7, current_email):
+    print("value5 is {}".format(value5))
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -50,20 +51,14 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         value = str(value4)
         value4 = value
         value4 = "'" + value4 + "'"
-    elif value4 == None:
-        value4 = ''
-        value4 = "'" + value4 + "'"
+    else:
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
-        value5 = "'" + value5 + "'"
-    else:
-        value5 = str(value5)
-        value5 = "'" + value5 + "'"
+    elif value5 == '':
+        value5 = None
     for value in value6:
         if value == 'True':
             value6 = 'LIFTOVER'
@@ -91,14 +86,18 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         string = string + ' --public'
 
     print(string)
-    if value4:
-        string = string + ' -w' + ' ' + value4 
-    if value5:
-        string = string + ' -a' + ' ' + value5
+    print("value4 is".format(value4))
+    print("value5 is".format(value5))
+
+    if value4 is not None:
+        string = string + ' --range' + ' ' + value4 
+    if value5 is not None:
+        string = string + ' --alt' + ' ' + value5
 
     return string
 
 def return_list(value1, value2, value3, value4, value5, value6, value7):
+    print("value5 is {}".format(value5))
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -129,17 +128,14 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     elif isinstance(value4, int):
         value = str(value4)
         value4 = value
-    elif value4 == None:
-        value4 = ''
+    else:
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
-    else:
-        value5 = str(value5)
+    elif value5 == '':
+        value5 = None
 
     for value in value6:
         if value == 'True':
@@ -171,6 +167,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
     return string_list
 
 def return_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
+    print("value5 is {}".format(value5))
     print(value1)
     LOG.debug(value1)
     print(value2)
@@ -224,20 +221,14 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         value = str(value4)
         value4 = value
         value4 = "'" + value4 + "'"
-    elif value4 == None:
-        value4 = ''
-        value4 = "'" + value4 + "'"
+    else:
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
-        value5 = "'" + value5 + "'"
-    else:
-        value5 = str(value5)
-        value5 = "'" + value5 + "'"
+    elif value5 == '':
+        value5 = None
 
 
     for value in value6:
@@ -265,13 +256,13 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
     if value7 == "'PUBLIC'":
         string = string + ' --public'
 
-    print(string)
-    if value4 != "''":
-        string = string + ' -w' + ' ' + value4 
-    if value5 != "''":
-        string = string + ' -a' + ' ' + value5
+    if value4 is not None:
+        string = string + ' --range' + ' ' + value4 
+    if value5 is not None:
+        string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
+    print(bash_string)
 
     try:
         bash = subprocess.check_output([bash_string], shell=True)
@@ -285,7 +276,8 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
     new_bash_list=[]
     for item in bash_list:
-        item = item.decode("utf-8") 
+        item = item.decode("utf-8")
+        item = item.lstrip() 
         item = item.replace('[', '')
         item = item.replace(']', '')
         item = item.replace('(', '')
@@ -294,6 +286,11 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         item = item.replace('"', '')
         print("item is: {}".format(item))
         item_list = item.split(',')
+        item_list_2 = []
+        for item in item_list:
+            item = item.lstrip() 
+            item_list_2.append(item)
+        item_list = item_list_2
         print("item_list is: {}".format(item_list))
         boolean = item_list[0]
         print("boolean: {}". format(boolean))
@@ -337,27 +334,22 @@ def bash_view(request):
         current_email = ''
     if request.method == 'POST':
         form = BamForm(request.POST)
-        
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
+                get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+
 
             return HttpResponseRedirect('/' + get_string)
-
         
     if request.method == 'GET':
-        print('getting')
-        LOG.debug('getting')
         check = 0
         params = dict(request.GET)
-        print(params)
-        LOG.debug(params)
         for k,v in params.items():
             if k == 'reference':
                 check += 1
@@ -407,7 +399,7 @@ def bash_view(request):
                 except Exception:
                         return HttpResponseBadRequest('Bad Request')
             
-            if listin[3] == '':
+            if listin[3] == None:
                 pass
             else:
                 try:
@@ -418,6 +410,7 @@ def bash_view(request):
                 except Exception:
                     return HttpResponseBadRequest('Bad Request')
             
+
             
 
 
@@ -427,12 +420,7 @@ def bash_view(request):
             
             if listin[6] not in publics:
                 return HttpResponseBadRequest('Bad Request')
-            
-            print(current_email)
-
-
                 
-
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
             boolean = dict_complete["boolean"]
             del dict_complete["boolean"]
@@ -441,8 +429,6 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-
-
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
@@ -450,9 +436,9 @@ def bash_view(request):
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
+
+
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -460,10 +446,10 @@ def bash_view(request):
             file = open(path, 'a+')  # 'a+' mode instead of 'w' mode
             file.write(return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email) + ' GET' + '\n')
             file.close()
-            
+
             return render(request, 'base.html', context)
             
-        
+    
     return render(request, template, context)
 
 def bash_true_view(request):
@@ -479,14 +465,14 @@ def bash_true_view(request):
     if request.method == 'POST':
         form = BamFormTrue(request.POST)
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
+                get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
 
             return HttpResponseRedirect('/' + get_string)
@@ -543,7 +529,7 @@ def bash_true_view(request):
                 except Exception:
                         return HttpResponseBadRequest('Bad Request')
             
-            if listin[3] == '':
+            if listin[3] == None:
                 pass
             else:
                 try:
@@ -573,7 +559,6 @@ def bash_true_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
@@ -582,6 +567,8 @@ def bash_true_view(request):
                     'num_datasets': num_datasets,
                     'form': form
                 }
+
+
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -608,14 +595,14 @@ def bash_false_view(request):
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
-            if form.cleaned_data['region'] != None and form.cleaned_data['mutated_allele'] != '':
-                get_string='?reference={}&chromosome={}&start={}&region={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+            if form.cleaned_data['region'] == None and form.cleaned_data['mutated_allele'] == '':
+                get_string='?reference={}&chromosome={}&start={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['region'] != None:
-                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'],form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != '':
                 get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             else:
-                get_string='?reference={}&chromosome={}&start={}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
+                get_string='?reference={}&chromosome={}&start={}&region{}&mutated_allele={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['mutated_allele'], form.cleaned_data['liftover'], form.cleaned_data['public'])
 
 
             return HttpResponseRedirect('/' + get_string)
@@ -672,7 +659,7 @@ def bash_false_view(request):
                 except Exception:
                         return HttpResponseBadRequest('Bad Request')
             
-            if listin[3] == '':
+            if listin[3] == None:
                 pass
             else:
                 try:
@@ -703,7 +690,6 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
@@ -711,8 +697,6 @@ def bash_false_view(request):
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
             
             timestr = time.strftime("%Y%m%d")
