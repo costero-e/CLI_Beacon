@@ -280,6 +280,8 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         print(output)
 
     bash_list = bash.split(b'\n')
+    print(bash_list)
+    LOG.debug(bash_list)
 
     new_bash_list=[]
     for item in bash_list:
@@ -288,7 +290,6 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         item = item.replace(']', '')
         item = item.replace('(', '')
         item = item.replace(')', '')
-        item = item.replace(' ', '')
         item = item.replace("'", '')
         item = item.replace('"', '')
         print("item is: {}".format(item))
@@ -580,8 +581,6 @@ def bash_true_view(request):
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
             
             timestr = time.strftime("%Y%m%d")
