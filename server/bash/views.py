@@ -342,6 +342,8 @@ def bash_view(request):
         form = BamForm(request.POST)
         
         if form.is_valid():
+            print(form.cleaned_data['region'])
+            print(form.cleaned_data['mutated_allele'])
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != None:
@@ -609,6 +611,8 @@ def bash_false_view(request):
     if request.method == 'POST':
         form = BamFormFalse(request.POST)
         if form.is_valid():
+            print(form.cleaned_data['region'])
+            print(form.cleaned_data['mutated_allele'])
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != None:
