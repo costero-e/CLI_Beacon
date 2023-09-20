@@ -343,7 +343,9 @@ def bash_view(request):
         
         if form.is_valid():
             print("region is {}".format(form.cleaned_data['region']))
+            LOG.debug("region is {}".format(form.cleaned_data['region']))
             print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
+            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != None:
@@ -483,7 +485,9 @@ def bash_true_view(request):
         form = BamFormTrue(request.POST)
         if form.is_valid():
             print("region is {}".format(form.cleaned_data['region']))
+            LOG.debug("region is {}".format(form.cleaned_data['region']))
             print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
+            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != None:
@@ -612,7 +616,9 @@ def bash_false_view(request):
         form = BamFormFalse(request.POST)
         if form.is_valid():
             print("region is {}".format(form.cleaned_data['region']))
+            LOG.debug("region is {}".format(form.cleaned_data['region']))
             print("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
+            LOG.debug("mutated allele is {}".format(form.cleaned_data['mutated_allele']))
             if form.cleaned_data['region'] != None:
                 get_string='?reference={}&chromosome={}&start={}&region={}&liftover={}&public={}'.format(form.cleaned_data['reference'], form.cleaned_data['chromosome'], form.cleaned_data['start'], form.cleaned_data['region'], form.cleaned_data['liftover'], form.cleaned_data['public'])
             elif form.cleaned_data['mutated_allele'] != None:
