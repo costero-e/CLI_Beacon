@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="media/tablesorter.js"></script>
     <script src="media/arrows.js"></script>
+    <script src="media/arrows2.js"></script>
     <script src="media/form.js"></script>
 
 
@@ -93,7 +94,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
                   <table id="EGAtable">
                     <tr>
                       <th scope="col" id="header" onclick="sortTable(0); classToggle()" class="bi bi-caret-down-fill">EGA dataset</th>
-                      <th scope="col">Desc dataset</th>
+                      <th scope="col" id="header2" onclick="sortTable(0); classToggle2()" class="bi bi-caret-down-fill">Title</th>
                     </tr>
                     {% for key,value in datasets.items %}
                     <tr>
@@ -148,24 +149,24 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
         
 
         <div class="row" style="margin-top: 20px">
-          <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px;"> List of Datasets</button>
+          <button class="btn btn-primary mb-3 bi bi-info-square-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px;"> List of public Datasets</button>
             <ul class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">
-              <li><a href="" target="_blank">Exome Sequencing Project (ESP-NHLBI)</a></li>
-              <li><a href="" target="_blank">Simons Genome Diversity Project</a></li>
-              <li><a href="" target="_blank">Platinum Genomes</a></li>
-              <li><a href="" target="_blank">Brain Genomics</a></li>
-              <li><a href="" target="_blank">Encode (open)</a></li>
-              <li><a href="" target="_blank">TCGA (open)</a></li>
-              <li><a href="" target="_blank">HapMap</a></li>
-              <li><a href="" target="_blank">gnomAD</a></li>
-              <li><a href="" target="_blank">1000 Genomes</a></li>
-              <li><a href="" target="_blank">ExAC</a></li>
-              <li><a href="" target="_blank">GiaB</a></li>
-              <li  style="padding-bottom: 15px;"><a href="" target="_blank">NCBI ALFA</a></li>
+              <li>Exome Sequencing Project (ESP-NHLBI)</li>
+              <li>Simons Genome Diversity Project</li>
+              <li>Platinum Genomes</li>
+              <li>Brain Genomics</li>
+              <li>Encode (open)</li>
+              <li>TCGA (open)</li>
+              <li>HapMap</li>
+              <li>gnomAD</li>
+              <li>1000 Genomes</li>
+              <li>ExAC</li>
+              <li>GiaB</li>
+              <li  style="padding-bottom: 15px;">NCBI ALFA</li>
 
-              <li><a href="" target="_blank">dbVar</a></li>
-              <li><a href="" target="_blank">ClinVar</a></li>
-              <li><a href="" target="_blank">dbSNP</a></li>
+              <li>dbVar</li>
+              <li>ClinVar</li>
+              <li>dbSNP</li>
             </ul>  
           </div>
 
@@ -236,7 +237,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
   }
 }
 </script>
-<script src="media/submit.js"></script>
 
 </body>
 </html>

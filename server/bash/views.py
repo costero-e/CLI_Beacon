@@ -428,6 +428,8 @@ def bash_view(request):
                 return HttpResponseBadRequest('Bad Request')
             
             print(current_email)
+
+
                 
 
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email)
@@ -438,7 +440,6 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            form = BamForm(initial={'region': params['region']})
 
 
             context = {
@@ -461,7 +462,7 @@ def bash_view(request):
             
             return render(request, 'base.html', context)
             
-        context.update({'form': form})
+        
     return render(request, template, context)
 
 def bash_true_view(request):
