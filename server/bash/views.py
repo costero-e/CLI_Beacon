@@ -439,6 +439,7 @@ def bash_view(request):
                     'num_datasets': num_datasets,
                     'form': form
                 }
+            
 
             context['form'] = BamForm(initial={'start': params['start']})
             
