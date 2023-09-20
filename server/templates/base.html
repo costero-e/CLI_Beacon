@@ -15,7 +15,9 @@
     <script src="media/tablesorter.js"></script>
     <script src="media/arrows.js"></script>
     <script src="media/arrows2.js"></script>
+
     <script src="media/form.js"></script>
+
 
 
   </head>
@@ -149,8 +151,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
         
 
         <div class="row" style="margin-top: 20px">
-          <button class="btn btn-primary mb-3 bi bi-list-task ms-2" style="background-color: #185177; border-color: #185177" onclick="myFunction()" style="width: 120px;"> List of public Datasets</button>
-            <ul class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDI">
+          <button class="collapsible btn btn-primary mb-3 bi bi-caret-down-fill ms-2" style="background-color: #185177; border-color: #185177" onclick="classToggle3()" style="width: 120px;" id="collapsibleb"> List of public Datasets</button>
+          <ul class="card border border-dark" style="margin-left: 12px; max-width: 99%" id="myDIlist">
               <li>Exome Sequencing Project (ESP-NHLBI)</li>
               <li>Simons Genome Diversity Project</li>
               <li>Platinum Genomes</li>
@@ -238,5 +240,22 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,55,119,0.112504376
 }
 </script>
 <script src="media/submit.js"></script>
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+  </script>
+  <script src="media/arrows3.js"></script>
 </body>
 </html>
