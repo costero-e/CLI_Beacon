@@ -428,7 +428,8 @@ def bash_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            print(num_results)
+            if num_results == 0:
+                num_results = None
 
 
 
@@ -561,7 +562,8 @@ def bash_true_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            print(num_results)
+            if num_results == 0:
+                num_results = None
 
 
             context = {
@@ -692,7 +694,8 @@ def bash_false_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
-            print(num_results)
+            if num_results == 0:
+                num_results = None
 
 
             context = {
