@@ -429,20 +429,24 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
             if num_results == 0:
-                num_results = None
-
-
-
-            context = {
+                context = {
+                        'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
+                        'boolean': boolean,
+                        'datasets': dict_complete,
+                        'num_datasets': num_datasets,
+                        'form': form
+                    }
+            else:
+                context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
                     'num_results': num_results,
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
+
+
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -563,10 +567,15 @@ def bash_true_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
             if num_results == 0:
-                num_results = None
-
-
-            context = {
+                context = {
+                        'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
+                        'boolean': boolean,
+                        'datasets': dict_complete,
+                        'num_datasets': num_datasets,
+                        'form': form
+                    }
+            else:
+                context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
                     'num_results': num_results,
@@ -574,6 +583,8 @@ def bash_true_view(request):
                     'num_datasets': num_datasets,
                     'form': form
                 }
+
+
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -695,18 +706,21 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
             if num_results == 0:
-                num_results = None
-
-
-            context = {
+                context = {
+                        'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
+                        'boolean': boolean,
+                        'datasets': dict_complete,
+                        'num_datasets': num_datasets,
+                        'form': form
+                    }
+            else:
+                context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
                     'num_results': num_results,
                     'datasets': dict_complete,
                     'num_datasets': num_datasets,
                     'form': form
-
-
                 }
             
             timestr = time.strftime("%Y%m%d")
