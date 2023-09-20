@@ -273,7 +273,8 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
 
     new_bash_list=[]
     for item in bash_list:
-        item = item.decode("utf-8") 
+        item = item.decode("utf-8")
+        item = item.strip() 
         item = item.replace('[', '')
         item = item.replace(']', '')
         item = item.replace('(', '')
