@@ -1,9 +1,6 @@
 
 var storedValue = localStorage.getItem("id_region");
 console.log(storedValue)
-storedValue.replace('[','')
-storedValue.replace("'",'')
-let b = parseInt(storedValue);
 
 var storedValue2 = localStorage.getItem("id_start");
 console.log(storedValue2)
@@ -39,7 +36,7 @@ storedValue7.replace("'",'')
 
 
 window.onload = function(){
-  document.getElementById("id_region").value = b;
+  document.getElementById("id_region").value = storedValue;
   document.getElementById("id_start").value = c;
   document.getElementById("id_chromosome").value = d;
   document.getElementById("id_ref_gen").value = storedValue4;
