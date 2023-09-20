@@ -537,7 +537,7 @@ def bash_true_view(request):
                 except Exception:
                         return HttpResponseBadRequest('Bad Request')
             
-            if listin[3] == '':
+            if listin[3] == None:
                 pass
             else:
                 try:
@@ -666,7 +666,7 @@ def bash_false_view(request):
                 except Exception:
                         return HttpResponseBadRequest('Bad Request')
             
-            if listin[3] == '':
+            if listin[3] == None:
                 pass
             else:
                 try:
