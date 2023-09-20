@@ -51,18 +51,15 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
         value4 = value
         value4 = "'" + value4 + "'"
     else:
-        value4 = ''
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
-        value5 = "'" + value5 + "'"
+    elif isinstance(value5, str):
+        pass
     else:
-        value5 = str(value5)
-        value5 = "'" + value5 + "'"
+        value5 = None
     for value in value6:
         if value == 'True':
             value6 = 'LIFTOVER'
@@ -93,9 +90,9 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
     print("value4 is".format(value4))
     print("value5 is".format(value5))
 
-    if value4 is not '':
+    if value4 is not None:
         string = string + ' --range' + ' ' + value4 
-    if value5 is not '':
+    if value5 is not None:
         string = string + ' --alt' + ' ' + value5
 
     return string
@@ -132,16 +129,15 @@ def return_list(value1, value2, value3, value4, value5, value6, value7):
         value = str(value4)
         value4 = value
     else:
-        value4 = ''
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
+    elif isinstance(value5, str):
+        pass
     else:
-        value5 = str(value5)
+        value5 = None
 
     for value in value6:
         if value == 'True':
@@ -226,20 +222,16 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
         value = str(value4)
         value4 = value
         value4 = "'" + value4 + "'"
-    elif value4 == None:
-        value4 = ''
-        value4 = "'" + value4 + "'"
+    else:
+        value4 = None
     if isinstance(value5, list):
         for value in value5:
             value5 = str(value)
             value5 = "'" + value5 + "'"
-    elif isinstance(value5, int):
-        value = str(value)
-        value5 = value
-        value5 = "'" + value5 + "'"
+    elif isinstance(value5, str):
+        pass
     else:
-        value5 = str(value5)
-        value5 = "'" + value5 + "'"
+        value5 = None
 
 
     for value in value6:
@@ -267,9 +259,9 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, curr
     if value7 == "'PUBLIC'":
         string = string + ' --public'
 
-    if value4 != '':
+    if value4 is not None:
         string = string + ' --range' + ' ' + value4 
-    if value5 != '':
+    if value5 is not None:
         string = string + ' --alt' + ' ' + value5
     
     bash_string = 'cd /beacon-BED-based/ ' + '&&' + ' python3 main.py' + string
