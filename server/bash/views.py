@@ -656,6 +656,9 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
+            initial = {'region': 1000}
+            form = BamForm(initial=initial)
+
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
                     'boolean': boolean,
