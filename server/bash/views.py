@@ -411,9 +411,9 @@ def bash_view(request):
                 initial_mutated = listin[4]
 
             if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             form = BamForm(initial=initial)
 
             context = {
@@ -554,9 +554,9 @@ def bash_true_view(request):
                 initial_mutated = listin[4]
 
             if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             form = BamForm(initial=initial)
 
             context = {
@@ -697,9 +697,9 @@ def bash_false_view(request):
                 initial_mutated = listin[4]
 
             if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': initial_liftover}
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': False}
             form = BamForm(initial=initial)
 
             context = {
