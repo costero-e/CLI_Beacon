@@ -401,7 +401,7 @@ def bash_view(request):
             del dict_complete["num_datasets"]
 
 
-            initial = {'start': int(listin[2])}
+            initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
             form = BamForm(initial=initial)
 
             context = {
@@ -530,7 +530,7 @@ def bash_true_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            initial = {'start': int(listin[2])}
+            initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
             form = BamForm(initial=initial)
 
             context = {
@@ -660,7 +660,7 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            initial = {'start': int(listin[2])}
+            initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
             form = BamForm(initial=initial)
 
             context = {
