@@ -400,7 +400,8 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            initial = {'region': 1000}
+
+            initial = {'region': params['region'], 'start': params['start']}
             form = BamForm(initial=initial)
 
             context = {
@@ -529,7 +530,7 @@ def bash_true_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            initial = {'region': 1000}
+            initial = {'region': params['region'], 'start': params['start']}
             form = BamForm(initial=initial)
 
             context = {
@@ -659,7 +660,7 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            initial = {'region': 1000}
+            initial = {'region': params['region'], 'start': params['start']}
             form = BamForm(initial=initial)
 
             context = {
