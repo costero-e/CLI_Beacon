@@ -405,6 +405,8 @@ def bash_view(request):
             elif listin[5] == "'LIFTOVER'":
                 initial_liftover = True
 
+            print(listin[6])
+
             if listin[6] == "'PUBLIC'":
                 initial_public = True
             else:
