@@ -400,7 +400,8 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            
+            initial = {'region': 1000}
+            form = BamForm(initial=initial)
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
@@ -412,7 +413,6 @@ def bash_view(request):
                 }
             
 
-            context['form'] = BamForm(initial={'start': params['start']})
             
             timestr = time.strftime("%Y%m%d")
             file_name = timestr
@@ -528,6 +528,9 @@ def bash_true_view(request):
             del dict_complete["num_results"]
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
+
+            initial = {'region': 1000}
+            form = BamForm(initial=initial)
 
             context = {
                     'string': return_string(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], current_email),
