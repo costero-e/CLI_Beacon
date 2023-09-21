@@ -400,6 +400,8 @@ def bash_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
+            print(listin[5])
+
             if listin[4]:
                 initial_mutated = listin[4].replace("'",'')
             else:
