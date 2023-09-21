@@ -405,10 +405,10 @@ def bash_view(request):
             elif listin[5] == "'LIFTOVER'":
                 initial_liftover = True
 
-            if listin[6] == "''":
-                initial_public = False
-            elif listin[6] == "'PUBLIC'":
+            if listin[6] == "'PUBLIC'":
                 initial_public = True
+            else:
+                initial_public = False
 
             if listin[4]:
                 initial_mutated = listin[4].replace("'",'')
@@ -553,10 +553,10 @@ def bash_true_view(request):
             elif listin[5] == "'LIFTOVER'":
                 initial_liftover = True
 
-            if listin[6] == "''":
-                initial_public = False
-            elif listin[6] == "'PUBLIC'":
+            if listin[6] == "'PUBLIC'":
                 initial_public = True
+            else:
+                initial_public = False
 
             if listin[4]:
                 initial_mutated = listin[4].replace("'",'')
@@ -701,10 +701,10 @@ def bash_false_view(request):
             elif listin[5] == "'LIFTOVER'":
                 initial_liftover = True
 
-            if listin[6] == "''":
-                initial_public = False
-            elif listin[6] == "'PUBLIC'":
+            if listin[6] == "'PUBLIC'":
                 initial_public = True
+            else:
+                initial_public = False
 
             if listin[4]:
                 initial_mutated = listin[4].replace("'",'')
