@@ -401,10 +401,12 @@ def bash_view(request):
             del dict_complete["num_datasets"]
 
 
+            initial_mutated = listin[4].replace("'",'')
+
             if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
             else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}            
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
             form = BamForm(initial=initial)
 
             context = {
@@ -533,10 +535,13 @@ def bash_true_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
+            
+            initial_mutated = listin[4].replace("'",'')
+
             if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
             else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
             form = BamForm(initial=initial)
 
             context = {
@@ -666,11 +671,12 @@ def bash_false_view(request):
             num_datasets = dict_complete["num_datasets"]
             del dict_complete["num_datasets"]
 
-            if listin[3]:
-                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
-            else:
-                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': listin[4], 'public': listin[5], 'liftover': listin[6]}
+            initial_mutated = listin[4].replace("'",'')
 
+            if listin[3]:
+                initial = {'start': int(listin[2]), 'region': int(listin[3]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
+            else:
+                initial = {'start': int(listin[2]), 'chromosome': listin[1], 'reference': listin[0], 'mutated_allele': initial_mutated, 'public': listin[6], 'liftover': listin[5]}
             form = BamForm(initial=initial)
 
             context = {
