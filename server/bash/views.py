@@ -421,8 +421,8 @@ def bash_view(request):
             if listin[6] not in publics:
                 return HttpResponseBadRequest('Bad Request')
             
-            if listin[7] not in icvs:
-                return HttpResponseBadRequest('Bad Request')
+            #if listin[7] not in icvs:
+               # return HttpResponseBadRequest('Bad Request')
                 
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], params['icv'],current_email)
             boolean = dict_complete["boolean"]
