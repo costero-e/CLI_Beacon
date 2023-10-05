@@ -77,10 +77,10 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, value8
     for value in value8:
         if value == 'True':
             value8 = 'ICV'
-            value7 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
         else:
             value8 = ''
-            value8 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
 
         
     string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
@@ -161,10 +161,10 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
     for value in value8:
         if value == 'True':
             value8 = 'ICV'
-            value7 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
         else:
             value8 = ''
-            value8 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
 
     string_list = []
     string_list.append(value1)
@@ -251,10 +251,10 @@ def return_datasets(value1, value2, value3, value4, value5, value6, value7, valu
     for value in value8:
         if value == 'True':
             value8 = 'ICV'
-            value7 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
         else:
             value8 = ''
-            value8 = "'" + value7 + "'"
+            value8 = "'" + value8 + "'"
 
     string = ' --chr' + ' ' + value2 + ' --pos' + ' ' + value3 + ' --ref_gen' + ' ' + value1
 
@@ -379,9 +379,7 @@ def bash_view(request):
             chromosomess=[str(x) for x in range(1, 23)] + ["X", "Y", "MT"]
             liftovers=["'LIFTOVER'", "''"]
             publics=["'PUBLIC'", "''"]
-            icvs=["'ICV'", "''"]
-            print(listin)
-            
+            icvs=["'ICV'", "''"]            
 
 
             if listin[0] not in references:
@@ -422,8 +420,8 @@ def bash_view(request):
             if listin[6] not in publics:
                 return HttpResponseBadRequest('Bad Request')
             
-            #if listin[7] not in icvs:
-               # return HttpResponseBadRequest('Bad Request')
+            if listin[7] not in icvs:
+               return HttpResponseBadRequest('Bad Request')
                 
             dict_complete = return_datasets(params['reference'], params['chromosome'], params['start'], params['region'], params['mutated_allele'], params['liftover'], params['public'], params['icv'],current_email)
             boolean = dict_complete["boolean"]
