@@ -13,6 +13,7 @@ class BamForm(forms.Form):
     mutated_allele = forms.CharField(max_length=50, required=False, initial='', help_text="<span class='hovertext' data-hover='Search for a specific variation that query will look for'>Mutated Allele</span>", label="")
     liftover = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='Liftover'>Liftover</span>", label="")
     public = forms.BooleanField(required=False, initial=True, help_text="<span class='hovertext' data-hover='Public'>Public</span>", label="")
+    icv = forms.BooleanField(required=False, help_text="<span class='hovertext' data-hover='ICV'>ICV</span>", label="")
 
 class BamFormTrue(forms.Form):
     def __init__(self, *args, **kwargs):
