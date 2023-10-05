@@ -380,6 +380,7 @@ def bash_view(request):
             liftovers=["'LIFTOVER'", "''"]
             publics=["'PUBLIC'", "''"]
             icvs=["'ICV'", "''"]
+            print(listin)
             
 
 
