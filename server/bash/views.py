@@ -105,7 +105,7 @@ def return_string(value1, value2, value3, value4, value5, value6, value7, curren
 
     return string
 
-def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
+def return_list(value1, value2, value3, value4, value5, value6, value7):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
@@ -184,7 +184,7 @@ def return_list(value1, value2, value3, value4, value5, value6, value7, value8):
 
     return string_list
 
-def return_datasets(value1, value2, value3, value4, value5, value6, value7, value8, current_email):
+def return_datasets(value1, value2, value3, value4, value5, value6, value7, current_email):
     if isinstance(value1, list):
         for value in value1:
             value1 = str(value)
